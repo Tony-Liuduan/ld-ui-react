@@ -41,15 +41,11 @@ module.exports = {
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
-		new webpack.optimize.CommonsChunkPlugin({
-            name: 'common',
-            filename: 'common_[hash].js'
-        }),
 		new HtmlWebpackPlugin({
             favicon:'./src/imgs/icons/favicon.ico',
             template: './public/index.html',
             filename: './index.html',
-            chunks: ['index', 'common'],
+            chunks: ['index'],
             inject: 'body'
         })
 	],

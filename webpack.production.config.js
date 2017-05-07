@@ -66,17 +66,17 @@ module.exports = {
             filename: 'vendors-[hash].js'
         }),
         // 提取入口文件公共代码
-        new webpack.optimize.CommonsChunkPlugin({
+        /*new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
             filename: 'common-[hash].js'
-        }),
+        }),*/
         new ExtractTextPlugin("app.css"),
         // 自动构建 .html 文件
 		new HtmlWebpackPlugin({
             favicon:'./src/imgs/icons/favicon.ico',
             template: './public/index.html',
             filename: './index.html',
-            chunks: ['vendors', 'common', 'index'],
+            chunks: ['vendors', 'index'],
             inject: 'body',
             // 压缩html文件
             minify: {
