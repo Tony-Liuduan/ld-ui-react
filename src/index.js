@@ -9,10 +9,8 @@ import Home from './containers/Home';
 import './app.css';
 let rootElement = document.getElementById('root');
 
-ReactDOM.render(
-	    
+ReactDOM.render(    
 		<App>
 		</App>,
 	rootElement
-
 )
