@@ -1,0 +1,22 @@
+{
+    "resultCode": 1,
+    "resultMsg": "成功",
+    "content": {
+        "loanApplyId": 1324,
+        "carInfoId": "1234",
+        "cdName": "张三",
+        "collectCertDate": "",
+        "collectCarDate": "2017-01-23",
+        "lastRegisterDate": "2017-01-23",
+        "carOwner": "张三",
+        "relation": 10,
+        "certStoreLocation": "花乡市场58客服中心",
+        "certKeeper": "小明",
+        "carRegisterCertPhoto": "/csd/image/204/postive_idcard/n_v1bkuyfvlivuufml6t6iua.jpg",
+        "vehicleTravelLicensePhoto": "/csd/image/204/postive_idcard/n_v1bkuyfvlivuufml6t6iua.jpg",
+        "collectCarContractPhoto": "/csd/image/204/postive_idcard/n_v1bkuyfvlivuufml6t6iua.jpg",
+        "loanAgreementPhoto": "/csd/image/204/postive_idcard/n_v1bkuyfvlivuufml6t6iua.jpg",
+        "spareKeyPhoto": "/csd/image/204/postive_idcard/n_v1bkuyfvlivuufml6t6iua.jpg",
+        "otherPhoto": "/csd/image/204/postive_idcard/n_v1bkuyfvlivuufml6t6iua.jpg"
+    }
+}

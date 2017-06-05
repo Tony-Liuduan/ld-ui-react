@@ -1,0 +1,18 @@
+{
+	"resultCode": 1,
+	"resultMsg": "成功",
+	"content": {
+		"userId": 1,
+		"carVin":"Vin231231231",
+		"carOwner":"机动车所有人",
+		"registerCertPic":"http://pic11.nipic.com/20101214/213291_155243023914_2.jpg",
+		"driveCertPic":"",
+		"receiveContractPic":"",
+		"loanProtocolPic":"",
+		"backupKeyPic":"",
+		"otherPic":"",
+		"exceptionResult": 20,
+		"remark":"盘车备注",
+		"taskStatus": 20
+	}
+}

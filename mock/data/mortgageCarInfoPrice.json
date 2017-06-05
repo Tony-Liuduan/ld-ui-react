@@ -1,0 +1,8 @@
+{
+	"resultCode": 1,
+	"resultMsg": "成功",
+	"content": {
+        "evaluatePrice58": "100000.00",
+        "carLoanAmount": "70000.00"
+	}
+}

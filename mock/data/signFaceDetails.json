@@ -1,0 +1,21 @@
+{
+	"resultCode": 1,
+	"resultMsg": "成功",
+	"content": {
+		"taskId": "233",
+		"taskType":"20",
+		"taskStatus": 40,
+		"remarks": "我是客户经理，这是我的跟进记录信息，我是客户经理，这是我的跟进记录信息，我是客户经理。",
+		"applyTime":"2017-04-07",
+		"custName":"李三",
+		"posCustName":"北京达信行有限公司",
+		"mobile":"15810338575",
+		"marketName":"北京花乡交易市场",
+		"addrDetail":"A区北厅34#",
+		"creditAmount":15,
+		"mortgageAmount":20,
+		"startDate":"2017-02-23",
+		"endDate": "2018-02-22"
+	}
+}
+

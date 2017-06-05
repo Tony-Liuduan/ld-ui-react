@@ -1,0 +1,19 @@
+{
+    "resultCode": 1,
+    "resultMsg": "成功！",
+    "content": {
+        "list": [{
+            "text":"雅阁",
+            "value":"410426"
+            },{
+            "text":"雅阁",
+            "value":"410426"
+            },{
+            "text":"雅阁",
+            "value":"410426"
+            },{
+            "text":"雅阁",
+            "value":"410426"
+        }]
+    }
+}

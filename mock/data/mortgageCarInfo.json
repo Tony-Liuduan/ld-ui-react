@@ -1,0 +1,32 @@
+{
+	"resultCode": 1,
+	"resultMsg": "成功",
+	"content": {
+	    "loanApplyId": "1324",
+	    "carInfoId": "1234",
+        "userId": "123456",
+        "cdName": "张三",
+	    "carVin": "JN1CCUA33Z0202320",
+	    "brandName": "奥迪A4L",
+	    "seriesName": "2017款 2.0T",
+	    "typeName": "自动 时尚型",
+        "brandId": "410387",
+        "seriesId": "410426",
+        "typeId": "682742",
+	    "carEngineId": "VQ30DE",
+	    "carColor": "80",
+	    "carPlateNumber": "浙BRG182",
+	    "mileage": "20160715",
+	    "firstRegisterTime":  "2014-05-03",
+	    "evaluatePrice58": "80000.00",
+	    "carLoanAmount": "60000.00",
+	    "carStoreLocation": "场内东区停车场A-92#",
+	    "verifyPerson": "文文文",
+	    "verifyPersonMobile": "13810666155",
+	    "verifyDate": "2014-05-03",
+	    "carAppearancePhoto": "/csd/image/204/postive_idcard/n_v1bkuyfvlivuufml6t6iua.jpg",
+	    "carOdometerPhoto": "/csd/image/204/postive_idcard/n_v1bkuyfvlivuufml6t6iua.jpg",
+	    "carVinPhoto": "/csd/image/204/postive_idcard/n_v1bkuyfvlivuufml6t6iua.jpg",
+	    "carStoreLocationPhoto": "/csd/image/204/postive_idcard/n_v1bkuyfvlivuufml6t6iua.jpg"
+	}
+}

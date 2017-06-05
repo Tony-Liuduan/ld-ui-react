@@ -1,0 +1,83 @@
+{
+	"resultCode": 1,
+	"resultMsg": "查询面签任务信息成功！",
+	"content": {
+		"signFaceList": [{
+			"taskId":"1",
+			"taskType":"20",
+			"applyTime":"2017-04-07",
+			"custName":"李三",
+			"posCustName":"北京达信行有限公司",
+			"mobile":"15810338575",
+			"marketName":"北京花乡交易市场",
+			"addrDetail":"A区北厅34#",
+			"creditAmount":15,
+			"mortgageAmount":20,
+			"startDate": "2017-02-23",
+			"endDate": "2018-02-22",
+			"cancelReason": 20,
+			"remarks": "取消原因哈哈啊取消原因哈哈啊取消原因哈哈啊取消原因哈哈啊取消原因哈哈啊",
+			"taskStatus":30
+		}, {
+			"taskId":"2",
+			"taskType":"20",
+			"applyTime":"2017-04-07",
+			"custName":"李三1111",
+			"posCustName":"北京达信行有限公司",
+			"mobile":"15810338575",
+			"marketName":"北京花乡交易市场",
+			"addrDetail":"A区北厅34#",
+			"creditAmount":15,
+			"mortgageAmount":20,
+			"startDate": "2017-02-23",
+			"endDate": "2018-02-22",
+			"cancelReason": 20,
+			"taskStatus":20
+		}, {
+			"taskId":"3",
+			"taskType":"20",
+			"applyTime":"2017-04-07",
+			"custName":"李三333333",
+			"posCustName":"北京达信行有限公司",
+			"mobile":"15810338575",
+			"marketName":"北京花乡交易市场",
+			"addrDetail":"A区北厅34#",
+			"creditAmount":15,
+			"mortgageAmount":20,
+			"startDate": "2017-02-23",
+			"endDate": "2018-02-22",
+			"cancelReason": 10,
+			"taskStatus":30
+		}, {
+			"taskId":"4",
+			"taskType":"20",
+			"applyTime":"2017-04-07",
+			"custName":"李三44444",
+			"posCustName":"北京达信行有限公司",
+			"mobile":"15810338575",
+			"marketName":"北京花乡交易市场",
+			"addrDetail":"A区北厅34#",
+			"creditAmount":15,
+			"mortgageAmount":20,
+			"startDate": "2017-02-23",
+			"endDate": "2018-02-22",
+			"cancelReason": 10,
+			"taskStatus":40
+		}, {
+			"taskId":"5",
+			"taskType":"20",
+			"applyTime":"2017-04-07",
+			"custName":"李三55555",
+			"posCustName":"北京达信行有限公司",
+			"mobile":"15810338575",
+			"marketName":"北京花乡交易市场",
+			"addrDetail":"A区北厅34#",
+			"creditAmount":15,
+			"mortgageAmount":20,
+			"startDate": "2017-02-23",
+			"endDate": "2018-02-22",
+			"cancelReason": 20,
+			"taskStatus":30
+		}]
+	}
+}

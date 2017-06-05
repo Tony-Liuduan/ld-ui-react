@@ -62,7 +62,7 @@ module.exports = {
         new CleanPlugin(['./build']),
         // 分离第三方应用
         new webpack.optimize.CommonsChunkPlugin({
-            chunkName: 'vendors',
+            name: 'vendors',
             filename: 'vendors-[hash].js'
         }),
         // 提取入口文件公共代码

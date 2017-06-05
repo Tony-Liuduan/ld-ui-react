@@ -8,7 +8,6 @@ module.exports = {
 		index: './src/index.js'
 	},
 	output: {
-		path: path.join(__dirname, 'build'),
 		filename: '[name]-[hash].js'
 	},
     resolve: {
@@ -49,8 +48,10 @@ module.exports = {
             inject: 'body'
         })
 	],
+    // contentBase 属性是虚拟路径，启动编译生成index.html,index.js 文件服务的虚拟根目录，
+    // 若没有设置代理，指向html文件根目录
     devServer: {
-        contentBase: path.join(__dirname + 'public'),
+        contentBase: './public', 
         hot: true,
         inline: true,
         port: 8089,

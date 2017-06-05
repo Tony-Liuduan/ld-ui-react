@@ -1,0 +1,20 @@
+{
+    "resultCode": 1,
+    "resultMsg": "成功！",
+    "content": {
+        "list": [{
+            "modelList":[{
+                "difftext":"",
+                "modelid":"682742",
+                "order":"24811",
+                "text":"1.6L 手动家悦版 7.88万"
+            },{
+                "difftext":"",
+                "modelid":"915069",
+                "order":"24812",
+                "text":"1.6 手动 家悦天窗版 8.18万"
+            }],
+            "year":"2016款"
+        }]
+    }
+}

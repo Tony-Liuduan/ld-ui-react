@@ -1,0 +1,71 @@
+{
+    "resultCode": 1,
+    "resultMsg": "成功",
+    "content": {
+	    "cdName": "张三",
+	    "poscustName": "北京达信行旧机动车经纪有限公司",
+	    "market": "北京花乡旧机动车交易市场",
+	    "operaddrDetail": "A区北厅34#",
+	    "creditAmount": 500000.00,
+	    "mortgageAmount": 600000.00,
+	    "expireddate": "20160715",
+	    "loanApplyAmount": 1000000.00,
+	    "loanDays": 90,
+	    "interate": "12.4%",
+	    "applyType": 20,
+	    "mobile": "18903450000",
+	    "applyTime": "2016-12-23 10:01:02",
+	    "carNum": 3,
+	    "needAmount":250000.00,
+	    "remark":"abcd",
+	    "list": [{
+            "carInfoId": 1,
+            "carName": "奥迪A4L 2017款 2.0T 自动 时尚型",
+            "carPlateNumber": "浙BRG182",
+            "carLoanAmount":  "54000.00",
+            "gotCerts": 1
+        },{
+            "carInfoId": 2,
+            "carName": "奥迪A4L",
+            "carPlateNumber": "浙BRG182",
+            "carLoanAmount":  "54000.00",
+            "gotCerts": 0
+        },{
+            "carInfoId": 3,
+            "carName": "奥迪A4L 2017款",
+            "carPlateNumber": "浙BRG182",
+            "carLoanAmount":  "54000.00",
+            "gotCerts": 1
+        },{
+            "carInfoId": 4,
+            "carName": "奥迪A4L 自动 时尚型",
+            "carPlateNumber": "浙BRG182",
+            "carLoanAmount":  "54000.00",
+            "gotCerts": 0
+        },{
+            "carInfoId": 5,
+            "carName": "奥迪A4L 2.0T 自动",
+            "carPlateNumber": "浙BRG182",
+            "carLoanAmount":  "54000.00",
+            "gotCerts": 0
+        },{
+            "carInfoId": 6,
+            "carName": "奥迪A4L 2017款 自动",
+            "carPlateNumber": "浙BRG182",
+            "carLoanAmount":  "54000.00",
+            "gotCerts": 1
+        },{
+            "carInfoId": 7,
+            "carName": "奥迪A4L 2017款 2.0T",
+            "carPlateNumber": "浙BRG182",
+            "carLoanAmount":  "54000.00",
+            "gotCerts": 1
+        },{
+            "carInfoId": 8,
+            "carName": "2017款 自动 时尚型",
+            "carPlateNumber": "浙BRG182",
+            "carLoanAmount":  "54000.00",
+            "gotCerts": 1
+        }]
+    }
+}
