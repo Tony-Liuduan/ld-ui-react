@@ -1,4 +1,5 @@
 import React from 'react';
+import Accordion from '../components/Accordion/Accordion.js';
 class App extends React.Component {
 
 	constructor(props) {
@@ -12,7 +13,7 @@ class App extends React.Component {
 		return (
 
 			<div>
-		        liuduan
+		        <Accordion title="Accordion Title Here" />
 			</div>
 
 		)
