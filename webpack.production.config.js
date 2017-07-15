@@ -6,13 +6,13 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin")
 module.exports = {
 	entry: {
 		index: './src/index.js',
-        vendors: ['react','react-dom','react-redux','react-router'] // 分离第三方应用
+        vendors: ['react','react-dom','react-redux','react-router','react-addons-css-transition-group'] // 分离第三方应用
 	},
 	output: {
 		path: path.join(__dirname, 'build'), // 输出文件夹地址
         publicPath: '/', // 项目开发改为cdn地址
         chunkFilename: "[name]-[chunkhash:8]-chunk.js", // 实现react按需加载
-        filename: '[name]-[hash].js', // 输出文件名
+        filename: '[name].js?[chunkhash]', // 输出文件名
 	},
     resolve: {
         extensions: [".js", ".jsx", ".json"] 

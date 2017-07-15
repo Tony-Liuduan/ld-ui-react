@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var OpenBrowserPlugin = require('open-browser-webpack-plugin')
 
 module.exports = {
     devtool: 'source-map',
@@ -68,12 +69,13 @@ module.exports = {
             可以通过filename参数指定输出的文件名
             html-webpack-plugin也可以不指定template参数, 它会使用默认的html模板.
         */
-        new HtmlWebpackPlugin({favicon: './src/imgs/icons/favicon.ico', template: './public/index.html', filename: './index.html', chunks: ['index'], inject: 'body'})
+        new HtmlWebpackPlugin({favicon: './src/imgs/icons/favicon.ico', template: './public/index.html', filename: './index.html', chunks: ['index'], inject: 'body'}),
+        new OpenBrowserPlugin({url: 'http://localhost:8089/'})
     ],
     // contentBase 属性是虚拟路径，启动编译生成index.html,index.js 文件服务的虚拟根目录，
     // 若没有设置代理，指向html文件根目录
     devServer: {
-        contentBase: './public',
+        contentBase: __dirname + '/public',
         hot: true,
         inline: true,
         port: 8089,
@@ -85,7 +87,6 @@ module.exports = {
             配置为true, 当访问的文件不存在时, 返回根目录下的index.html文件
         */
         historyApiFallback: true,
-        open: true,
         noInfo: false,
         proxy: {
             '*': {
