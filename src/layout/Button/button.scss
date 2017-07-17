@@ -1,0 +1,123 @@
+.ui-btn {
+	appearance: none;
+	-webkit-appearance: none;
+	border-radius: 4px;
+	border: 0;
+	box-sizing: border-box;
+	color: inherit;
+	display: block;
+	font-size: 18px;
+	line-height: 44px;
+	outline: 0;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	padding-left: 14px;
+    padding-right: 14px;
+
+	&-default {
+		color: #333;
+		background-color: #fff;
+		border:1px solid #e6e6e6;
+		&:active {
+			background-color: #f6f6f6;
+		}
+	}
+
+	&-white-orange {
+		color: #ff552e;
+		background-color: #fff;
+		border:1px solid #ff552e;
+		&:active {
+			background-color: #f6f6f6;
+		}
+	}
+
+	&-orange-white {
+		color: #fff;
+		background-color: #ff552e;
+		border:1px solid #ff552e;
+		&:active {
+			background-color: #E04A28;
+		}
+	}
+
+	&-white-blue {
+		color: #37ACF4;
+		background-color: #fff;
+		border:1px solid #37ACF4;
+		&:active {
+			background-color: #f6f6f6;
+		}
+	}
+
+	&-blue-white {
+		color: #fff;
+		background-color: #37ACF4;
+		border:1px solid #37ACF4;
+		&:active {
+			background-color: #0091cb;
+		}
+	}
+
+	&-normal {
+		display: inline-block;
+		padding: 0 12px;
+
+	}
+
+	&-small {
+		font-size: 14px;
+		line-height: 33px;
+		padding: 0 12px;
+		display: inline-block;
+	}
+
+	&-large {
+		display: block;
+		width: 100%;
+	}
+
+	&-disabled {
+		color: #fff;
+		background: #e6e6e6;
+		border: 1px solid #e6e6e6;
+	}
+
+}
+
+.ui-btn-area {
+	margin: 15px 0;
+	display: flex;
+	width: 100%;
+
+	&-row {
+		flex-direction: row;
+		
+		.ui-btn {
+			flex: 1;
+
+			& + .ui-btn {
+				margin-top: 0;
+				margin-left: 15px;
+			}
+		}
+	}
+
+	&-column {
+		flex-direction: column;
+		.ui-btn {
+			flex: 1;
+		}
+	}
+}
+
+.ui-btn + .ui-btn {
+    margin-top: 15px;
+}
+
+.btngroup {
+	.ui-btn + .ui-btn {
+		margin-left: 15px;
+	}
+}

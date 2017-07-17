@@ -1,0 +1,61 @@
+.ui-cells {
+	background-color: #FFFFFF;
+	line-height: 1.5;
+	font-size: 16px;
+	overflow: hidden;
+}
+
+.ui-cell-access {
+	//color: inherit;
+}
+
+.ui-cell {
+	padding: 10px 15px;
+	display: flex;
+	align-items: center;
+	position: relative;
+
+	&:before {
+		content: "";
+		position: absolute;
+		left: 15px;
+		right: 15px;
+		top: 0;
+		height: 1px;
+		border-top: 1px solid #e5e5e5;
+		color: #e5e5e5;
+		transform-origin: 0 0;
+		transform: scaleY(0.5);
+		z-index: 2;
+	}
+	
+	&:first-child {
+		&:before {
+			display: none;
+		}
+	}
+
+	&-body {
+		flex: 1;
+	}
+
+	&-arrow {
+		width: 12px;
+		height: 12px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		&:after {
+			width: 8px;
+			height: 8px;
+			content: '';
+			display: block;
+			border: 2px solid #c8c8c8;
+			border-top: 0 none;
+			border-left: 0 none;
+			transform: rotate(-45deg);
+		}
+	}
+}
+

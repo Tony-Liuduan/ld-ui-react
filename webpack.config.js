@@ -56,7 +56,7 @@ module.exports = {
     },
     /*配置webpack插件，plugin和loader的区别是, loader是在import时根据不同的文件名, 匹配不同的loader对这个文件做处理，而plugin, 关注的不是文件的格式, 而是在编译的各个阶段, 会触发不同的事件, 让你可以干预每个编译阶段.*/
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
+        //new webpack.HotModuleReplacementPlugin(),
         /*
             html-webpack-plugin用来打包入口html文件，entry配置的入口是js文件, webpack以js文件为入口, 遇到import, 用配置的loader加载引入文件
             但作为浏览器打开的入口html, 是引用入口js的文件, 它在整个编译过程的外面,所以, 我们需要html-webpack-plugin来打包作为入口的html文件
@@ -76,7 +76,6 @@ module.exports = {
     // 若没有设置代理，指向html文件根目录
     devServer: {
         contentBase: __dirname + '/public',
-        hot: true,
         inline: true,
         port: 8089,
         host: '127.0.0.1',

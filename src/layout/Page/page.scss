@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+	height: 100%;
+	-webkit-tap-highlight-color: transparent;
+}
+
+body {
+	font-family: -apple-system-font, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+ul{
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body, .page {
+    background-color: #f6f6f6;
+}
+
+.root {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+}
+
+.page {
+	position: absolute;
+	top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+    z-index: 1; // fix 滑动几次后可滚动区域会卡住的问题
+}
+
+.page-head {
+	padding: 40px;
+}
+
+.page-body-spacing {
+	padding: 0 15px;
+}
+
+.page-footer {
+	padding-top: 40px;
+	padding-bottom: 10px;
+	text-align: center;
+}
+
+.page-title {
+	text-align: left;
+    font-size: 20px;
+    font-weight: 400;
+    color: #333;
+}
+
+.page-desc {
+    margin-top: 5px;
+    color: #999;
+    text-align: left;
+    font-size: 14px;
+}
+
+.page.article, .page.loadmore, .page.actionsheet, .page.dialog,
+.page.msg_warn, .page.msg_success, .page.msg, .page.toast, .page.toptips,
+.page.popup, {
+    background-color: #fff;
+}
+
+.example-enter {
+	z-index: 1024;
+    opacity: 0.01;
+	transform: translate3d(100%, 0, 0);
+	transition: all .2s ease;
+	&.example-enter-active {
+		opacity: 1;
+        transform: translate3d(0, 0, 0);
+	}
+}
+
+.example-leave {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition: all .2s ease;
+    &.example-leave-active {
+        opacity: 0.01;
+        transform: translate3d(100%, 0, 0);
+    }
+}
+
+

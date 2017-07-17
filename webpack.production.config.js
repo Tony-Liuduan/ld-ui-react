@@ -6,7 +6,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin")
 module.exports = {
 	entry: {
 		index: './src/index.js',
-        vendors: ['react','react-dom','react-redux','react-router','react-addons-css-transition-group'] // 分离第三方应用
+        vendors: ['react','react-dom','react-redux','react-router','react-addons-css-transition-group','fastclick'] // 分离第三方应用
 	},
 	output: {
 		path: path.join(__dirname, 'build'), // 输出文件夹地址

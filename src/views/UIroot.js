@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import './UIroodt.scss';
+import './UIroot.scss';
 class UIroot extends Component {
 	render() {
 		return (
 			<ReactCSSTransitionGroup
 				component="div"
-				transitionName="page"
+				transitionName="example"
 				transitionEnterTimeout={500}
 				transitionLeaveTimeout={500}
 				style={{height: '100%'}}

@@ -1,0 +1,32 @@
+.page.home {
+
+	.page-body {
+		ul {
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			margin: 10px 0;
+			background-color: #FFFFFF;
+			overflow: hidden;
+			border-radius: 2px;
+			cursor: pointer;
+
+			&:first-child {
+				margin-top: 0;
+			}
+
+			.ui-flex {
+				padding: 20px;
+			}
+
+			.ui-cell {
+				padding: 10px 20px;
+				&:before {
+					left: 20px;
+					right: 20px;
+				}
+			}
+		}
+	}
+}
