@@ -9,7 +9,7 @@ const Page = (props) => {
 				<h1 className="page-title">{title}</h1>
 				<p className="page-desc">{subTitle}</p>
 			</div>
-			<div className={`page-body ${spacing} ? page-body-spacing`}>
+			<div className={`page-body ${spacing ? 'page-body-spacing' : ''}`}>
 				{children}
 			</div>
 			{footer ? 
