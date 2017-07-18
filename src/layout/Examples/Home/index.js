@@ -128,7 +128,7 @@ const UImenus = [
         name: 'Navigations',
         items: [
             {
-                label: 'Navbar',
+                label: 'NavBar',
                 to: '/navbar'
             },
             {
@@ -136,8 +136,8 @@ const UImenus = [
                 to: '/tabbar'
             },
             {
-                label: 'AutoNavbar',
-                to: '/navbar2'
+                label: 'NavBarRouter',
+                to: '/navbar/router'
             },
             {
                 label: 'AutoTabbar',

@@ -2,13 +2,14 @@ import React, {Component} from 'react'
 import { Router, Route, IndexRoute, IndexRedirect, browserHistory, hashHistory } from 'react-router'
 
 import UIroot from '../views/UIroot';
-import Layout from '../layout/Example/index';
+import Layout from '../layout/Examples/index';
 import App from '../containers/App';
 
 const {
 	Home,
 	Button,
-	Navbar
+	NavBar,
+	NavBarRouter,
 } = Layout;
 
 export default class Routers extends Component {
@@ -19,9 +20,13 @@ export default class Routers extends Component {
 				    <IndexRedirect to="/home" />
     		        <Route path="home" component={Home} />
     		        <Route path="button" component={Button} />
-    		        <Route path="navbar" component={Navbar} />
+    		        <Route path="navbar" component={NavBar} />
+    		        <Route path="navbar/router" component={NavBarRouter}>
+    		        	<IndexRoute component={Button} />
+    		        	<Route path="/navbar/router/:tabIndex" component={Button}></Route>    		
+    		        </Route>
     			</Route>
 			</Router>
-		);
+		); 
 	}
 };

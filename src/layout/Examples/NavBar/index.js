@@ -11,7 +11,7 @@ import {
 class NavBarPage extends Component{
 	render() {
 		return (
-			<Tab>
+			<Tab type="navbar-normal">
 				<NavBar>
 					<NavBarItem onClick={index => console.log(index)}>Nav1</NavBarItem>
 					<NavBarItem onClick={index => console.log(index)}>Nav2</NavBarItem>

@@ -6,11 +6,14 @@ import TabBody from './TabBody';
 class Tab extends Component {
 
 	static propTypes = {
-		currentIndex: PropTypes.number
+		currentIndex: PropTypes.number,
+		onSelect: PropTypes.func,
+		type: PropTypes.string
 	};
 
 	static defaultProps = {
-		currentIndex: 0
+		currentIndex: 0,
+		type: "tabbar" // navbar-normal  navbar-router  tabbar
 	};
 
 	constructor(props) {
@@ -21,12 +24,12 @@ class Tab extends Component {
 	}
 	
 	// 点击tab事件
-	handleHeaderClick(e, prop, index) {	
-		if (prop.onClick) {
-			this.setState({currentIndex: index}, () => prop.onClick(index));
-		} else {
-			this.setState({currentIndex: index});
-		}
+	handleHeaderClick(e, index) {	
+		const {onSelect} = this.props;
+
+        'function' === typeof onSelect 
+        	? this.setState({currentIndex: index}, () => onSelect(index)) 
+        	: this.setState({currentIndex: index});
 	}
 	
 	// 重写navbar tabbody中子组件
@@ -36,14 +39,14 @@ class Tab extends Component {
 					return cloneElement(child, Object.assign({}, child.props, {
 						key: index,
 						active: this.state.currentIndex == index,
-						onClick: (e) => this.handleHeaderClick(e, child.props, index),
+						onClick: (e) => this.handleHeaderClick(e, index),
 					}));
 				});
 		return result;
 	}
 	
 	// 拆分children为 header body 两部分
-	parseChildren(children) {
+	parseChildren(type, children) {
 		let ChildHeader = [], ChildBody = [];
 
 		Children.map(children, child => {
@@ -52,15 +55,17 @@ class Tab extends Component {
 			if (child.type === NavBar) {
 				ChildHeader = this.resetChildren(child.props.children);
 			} else if (child.type === TabBody) {
-				ChildBody = this.resetChildren(child.props.children);
+				type === "navbar-router" 
+					? ChildBody = child.props.children
+					: ChildBody = this.resetChildren(child.props.children);
 			}
 		});
 
 		return {ChildHeader, ChildBody};
 	}
 
-	renderTab(children, cls, other) {
-		const {ChildHeader, ChildBody} = this.parseChildren(children);
+	renderTab(type, children, cls, other) {
+		const {ChildHeader, ChildBody} = this.parseChildren(type, children);
 		return <div className={cls} {...other}>
 					<NavBar>
 						{ChildHeader}
@@ -72,12 +77,12 @@ class Tab extends Component {
 	}
 
 	render() {
-		const {currentIndex, children, className, ...other} = this.props;
+		const {type, currentIndex, children, className, ...other} = this.props;
 		const cls = classNames({
 			'ui-tab': true
 		}, className);
 
-		return this.renderTab(children, cls, other);
+		return this.renderTab(type, children, cls, other);
 	}
 };
 
