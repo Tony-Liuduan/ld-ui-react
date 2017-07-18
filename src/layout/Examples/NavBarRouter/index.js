@@ -5,8 +5,7 @@ import {
 	Tab,
     NavBar,
     NavBarItem,
-    TabBody,
-	TabBodyItem
+    TabBody
 } from '../../Tab/index';
 
 class NavBarRouterPage extends Component{

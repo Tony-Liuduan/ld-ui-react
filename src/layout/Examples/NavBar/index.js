@@ -11,11 +11,11 @@ import {
 class NavBarPage extends Component{
 	render() {
 		return (
-			<Tab type="navbar-normal">
+			<Tab type="navbar">
 				<NavBar>
-					<NavBarItem onClick={index => console.log(index)}>Nav1</NavBarItem>
-					<NavBarItem onClick={index => console.log(index)}>Nav2</NavBarItem>
-					<NavBarItem onClick={index => console.log(index)}>Nav3</NavBarItem>
+					<NavBarItem>Nav1</NavBarItem>
+					<NavBarItem>Nav2</NavBarItem>
+					<NavBarItem>Nav3</NavBarItem>
 				</NavBar>
 				<TabBody>
 					<TabBodyItem>Nav1content</TabBodyItem>

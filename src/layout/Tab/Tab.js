@@ -2,6 +2,7 @@ import React, {Component, PropTypes, Children, cloneElement} from 'react';
 import classNames from 'classnames';
 import NavBar from './NavBar';
 import TabBody from './TabBody';
+import TabBar from './TabBar';
 
 class Tab extends Component {
 
@@ -13,7 +14,7 @@ class Tab extends Component {
 
 	static defaultProps = {
 		currentIndex: 0,
-		type: "tabbar" // navbar-normal  navbar-router  tabbar
+		type: "tabbar" // navbar  navbar-router  tabbar
 	};
 
 	constructor(props) {
@@ -52,7 +53,7 @@ class Tab extends Component {
 		Children.map(children, child => {
 			if (!child) return;	
 			
-			if (child.type === NavBar) {
+			if (child.type === NavBar || child.type === TabBar) {
 				ChildHeader = this.resetChildren(child.props.children);
 			} else if (child.type === TabBody) {
 				type === "navbar-router" 
@@ -66,14 +67,32 @@ class Tab extends Component {
 
 	renderTab(type, children, cls, other) {
 		const {ChildHeader, ChildBody} = this.parseChildren(type, children);
-		return <div className={cls} {...other}>
+		
+		if (type === 'tabbar') {
+			return (
+				<div className={cls} {...other}>
+					<TabBody>
+						{ChildBody}
+					</TabBody>
+					<TabBar>
+						{ChildHeader}
+					</TabBar>
+				</div>
+			);
+		} else if (type === 'navbar' || type === 'navbar-router') {
+			return (
+				<div className={cls} {...other}>
 					<NavBar>
 						{ChildHeader}
 					</NavBar>
 					<TabBody>
 						{ChildBody}
 					</TabBody>
-               </div>
+				</div>
+			);
+		} else {
+			return false;
+		}
 	}
 
 	render() {

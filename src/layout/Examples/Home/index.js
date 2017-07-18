@@ -132,16 +132,12 @@ const UImenus = [
                 to: '/navbar'
             },
             {
-                label: 'Tabbar',
-                to: '/tabbar'
-            },
-            {
                 label: 'NavBarRouter',
                 to: '/navbar/router'
             },
             {
-                label: 'AutoTabbar',
-                to: '/tabbar2'
+                label: 'TabBar',
+                to: '/tabbar'
             }
         ]
     },
