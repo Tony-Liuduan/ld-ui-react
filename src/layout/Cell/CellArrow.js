@@ -1,29 +1,28 @@
 import React, {PropTypes} from 'react';
 import classNames from 'classnames';
 import './cell.scss';
-
-// footer for cell
+ 
+// arraw for cell 右箭头 下箭头
 
 const CellArrow = (props) => {
-	const {children, className, primary, ...other} = props;
+	const {children, className, direction, ...other} = props;
 	const cls = classNames({
-		'ui-cell-arrow': true,
-		'ui-cell-primary': primary,
-		[className]: className
-	});
+		'ui-cell-arrow': true
+	}, className);
+
 	return (
 		<div className={cls} {...other}>
-			{children}
+			<span className={'ui-cell-arrow-' + direction}>{children}</span>
 		</div>
 	);
 };
 
 CellArrow.propTypes = {
-	primary: PropTypes.bool
-}
+	direction: PropTypes.string
+};
 
 CellArrow.defaultProps = {
-	primary: false
+	direction: 'right' // right bottom
 };
 
 export default CellArrow;

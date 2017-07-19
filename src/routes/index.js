@@ -10,7 +10,8 @@ const {
 	Button,
 	NavBar,
 	NavBarRouter,
-	TabBar
+	TabBar,
+	List
 } = Layout;
 
 export default class Routers extends Component {
@@ -27,6 +28,7 @@ export default class Routers extends Component {
     		        	<Route path="/navbar/router/:tabIndex" component={Button}></Route>    		
     		        </Route>
     		        <Route path="tabbar" component={TabBar} />
+    		        <Route path="list" component={List} />
        			</Route>
 			</Router>
 		); 

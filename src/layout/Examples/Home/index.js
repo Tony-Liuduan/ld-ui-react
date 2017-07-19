@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import Page from '../../Page/index';
 import Accordion from '../../Accordion/index';
 import {Flex, FlexItem} from '../../Flex/index';
-import {Cells, Cell, CellBody, CellArrow} from '../../Cell/index';
+import {Cells, Cell, CellContent, CellArrow} from '../../Cell/index';
 
 import './home.scss';
 
@@ -175,9 +175,9 @@ const Home = (props) => {
                             <Cells>
                                 {menu.items.map((item, j) => (
                                     <Cell key={j} component={Link} to={item.to}>
-                                        <CellBody>
+                                        <CellContent>
                                             {item.label}
-                                        </CellBody>
+                                        </CellContent>
                                         <CellArrow />
                                     </Cell>
                                 ))}                           

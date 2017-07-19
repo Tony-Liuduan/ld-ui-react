@@ -1,19 +1,26 @@
-import Cell from './Cell';
-import CellHeader from './CellHeader';
-import CellBody from './CellBody';
-import CellFooter from './CellFooter';
-import CellArrow from './CellArrow';
 import Cells from './Cells';
-import CellTips from './CellTips';
-import CellTitle from './CellTitle';
+import CellsTitle from './CellsTitle';
+import Cell from './Cell';
+import CellIcon from './CellIcon';
+import CellContent from './CellContent';
+import CellExtra from './CellExtra';
+import CellArrow from './CellArrow';
+import CellLabel from './CellLabel';
+import CellControl from './CellControl';
+import CellClear from './CellClear';
+import CellTip from './CellTip';
+
 
 export default {
-	Cell,
-	CellHeader,
-	CellBody,
-	CellFooter,
-	CellArrow,
 	Cells,
-	CellTips,
-	CellTitle
+	CellsTitle,
+	Cell,
+	CellIcon,
+	CellContent,
+	CellExtra,
+	CellArrow,
+	CellLabel,
+	CellControl,
+	CellClear,
+	CellTip	
 };

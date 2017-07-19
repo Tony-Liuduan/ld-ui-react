@@ -1,19 +1,25 @@
 .ui-cells {
-	background-color: #FFFFFF;
 	line-height: 1.5;
 	font-size: 16px;
 	overflow: hidden;
-}
 
-.ui-cell-access {
-	//color: inherit;
+	&-title {
+		font-size: 12px;
+		padding: 10px 14px 8px;
+		color: #a5a5a5;	
+	}
 }
 
 .ui-cell {
-	padding: 10px 15px;
+	background-color: #FFFFFF;
+	padding: 13px 14px;
 	display: flex;
 	align-items: center;
 	position: relative;
+	text-align: left;
+	color: #333;
+	font-size: 14px;
+    line-height: 24px;
 
 	&:before {
 		content: "";
@@ -35,27 +41,143 @@
 		}
 	}
 
-	&-body {
+	&-icon {
+		height: 20px;
+		width: 20px;
+		margin-right: 5px;
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	&-label {
+		min-width: 96px;
+		display: flex;
+		align-items: center;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		
+		img {
+			height: 20px;
+			width: 20px;
+			display: block;
+			margin-right: 5px;
+		}
+	}
+
+	&-content {
+		width: auto;
+		min-width: 60px;
+		color: #333;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		flex: 1;
+		align-self: center;	
+	}
+
+	&-extra {
+		flex: 1;
+		color: #999;
+		width: auto;
+		min-width: 60px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		text-align: right;
+		padding-right: 4px;
+		line-height: 24px;
+		align-self: center;
+	}
+
+	&-control {
 		flex: 1;
 	}
 
+	&-tip {
+		width: auto;
+		min-width: 24px;
+		color: #999;
+		text-align: center;
+	}
+
 	&-arrow {
-		width: 12px;
-		height: 12px;
+		width: 24px;
+		height: 24px;
+		overflow: hidden;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 
-		&:after {
-			width: 8px;
-			height: 8px;
-			content: '';
+		span {
 			display: block;
-			border: 2px solid #c8c8c8;
-			border-top: 0 none;
-			border-left: 0 none;
-			transform: rotate(-45deg);
+			overflow: hidden;
+			width: 12px;
+			height: 12px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			&:before {
+				display: block;
+				width: 8px;
+				height: 8px;
+				content: '';
+				border: 2px solid #c8c8c8;
+				border-top: 0 none;
+				border-left: 0 none;
+			}
+
 		}
+
+		&-bottom:before {
+   			transform: rotate(45deg);
+   			margin-top: -4px;
+		}
+
+		&-right:before {
+    		transform: rotate(315deg);
+    		margin-left: -4px;
+
+		}
+	}
+
+	&-clear {
+		width: 24px;
+		height: 24px;
+		padding: 6px;
+		box-sizing: border-box;
+
+		&-icon {
+			    position: relative;
+			    display: block;
+			    width: 12px;
+			    height: 12px;
+			    padding: 2px;
+			    overflow: hidden;
+			    visibility: hidden;
+			    background-color: #bdbdbd;
+			    border-radius: 50%;
+			    transform: rotate(-45deg);
+			    box-sizing: border-box;
+
+			    &:before, &:after {
+			    	position: absolute;
+			    	content: "";
+			    	display: block;
+			    	width: 8px;
+			    	height: 1px;
+			    	left: 2px;
+			    	top: 50%;
+			    	background-color: #fff;
+			    }
+
+			    &:after {
+					transform: rotate(-90deg);
+			    }
+			}
 	}
 }
 
