@@ -27,32 +27,27 @@ class InputPage extends React.Component {
 	render() {
 		return (
 			<Page title="Input" subTitle="表单输入">
-				<form action="">
+			<form action="">
+				{/*================  radio  =================*/}
 				<Cells>
 					<CellsTitle>Radio</CellsTitle>
 					<Cell htmlFor>
-						<CellLabel>Option 1</CellLabel>
-						<CellExtra>
+						<CellContent>Option 1</CellContent>
 						<Radio name="radio1" value="1" defaultChecked></Radio>
-						</CellExtra>
 					</Cell>
 					<Cell htmlFor>
-						<CellLabel>Option 2</CellLabel>
-						<CellExtra>
-							<Radio name="radio1" value="2"></Radio>
-						</CellExtra>
+						<CellContent>Option 2</CellContent>
+						<Radio name="radio1" value="2"></Radio>
 					</Cell>
 					<Cell htmlFor>
-						<CellLabel>Option 3</CellLabel>
-						<CellExtra>
-							<Radio name="radio1" value="3" disabled></Radio>
-						</CellExtra>
+						<CellContent>Option 3</CellContent>
+						<Radio name="radio1" value="3" disabled></Radio>
 					</Cell>
 					<Cell link>
 						<CellContent>More</CellContent>
 					</Cell>
 				</Cells>
-
+				{/*================  radio-inline  =================*/}
 				<Cells>
 					<CellsTitle>Radio-inline</CellsTitle>
 					<Cell>
@@ -62,38 +57,30 @@ class InputPage extends React.Component {
 						<Radio name="sex" value="2" disabled inline>其他</Radio>
 					</Cell>				
 				</Cells>
-
+				{/*================  checkbox  =================*/}
 				<Cells>
 					<CellsTitle>Checkbox</CellsTitle>
 					<Cell htmlFor>
-						<CellLabel>Option 1</CellLabel>
-						<CellExtra>
+						<CellContent>Option 1</CellContent>
 						<Checkbox name="Checkbox1" value="1"></Checkbox>
-						</CellExtra>
 					</Cell>
 					<Cell htmlFor>
-						<CellLabel>Option 2</CellLabel>
-						<CellExtra>
-							<Checkbox name="Checkbox2" value="2" disabled defaultChecked></Checkbox>
-						</CellExtra>
+						<CellContent>Option 2</CellContent>
+						<Checkbox name="Checkbox2" value="2" disabled defaultChecked></Checkbox>
 					</Cell>
 					<Cell htmlFor>
-						<CellLabel>Option 3</CellLabel>
-						<CellExtra>
-							<Checkbox name="Checkbox3" value="3" defaultChecked></Checkbox>
-						</CellExtra>
+						<CellContent>Option 3</CellContent>
+						<Checkbox name="Checkbox3" value="3" defaultChecked></Checkbox>
 					</Cell>
 					<Cell htmlFor>
-						<CellLabel>Option 4</CellLabel>
-						<CellExtra>
-							<Checkbox name="Checkbox4" value="4" disabled></Checkbox>
-						</CellExtra>
+						<CellContent>Option 4</CellContent>
+						<Checkbox name="Checkbox4" value="4" disabled></Checkbox>
 					</Cell>
 					<Cell link>
 						<CellContent>More</CellContent>
 					</Cell>
 				</Cells>
-
+				{/*================  checkbox-inline  =================*/}
 				<Cells>
 					<CellsTitle>Checkbox-inline</CellsTitle>
 					<Cell>
@@ -103,9 +90,16 @@ class InputPage extends React.Component {
 						<Checkbox name="car3" value="2" inline>奥迪</Checkbox>
 					</Cell>				
 				</Cells>
-
+				{/*================  checkbox-inline  =================*/}
+				<Cells>
+					<CellsTitle>Switch</CellsTitle>
+					<Cell>
+						<CellContent>Switch Label</CellContent>
+						<Switch name="switch" value="switch" defaultChecked/>
+					</Cell>
+				</Cells>
 				<input type="submit" value="submit" height="20" width="50"/>
-				</form>
+			</form>
 			</Page>
 		);
 	}
