@@ -9,6 +9,8 @@ import CellLabel from './CellLabel';
 import CellControl from './CellControl';
 import CellClear from './CellClear';
 import CellTip from './CellTip';
+import Form from './Form';
+import FormCell from './FormCell';
 
 
 export default {
@@ -22,5 +24,7 @@ export default {
 	CellLabel,
 	CellControl,
 	CellClear,
-	CellTip	
+	CellTip,
+	Form,
+	FormCell
 };

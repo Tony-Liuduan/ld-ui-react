@@ -5,18 +5,18 @@ import './cell.scss';
 
 // cells item
 const Cell = (props) => {
-	const {children, className, href, htmlFor, component, ...other} = props;
+	const {children, className, href, htmlFor, link, component, ...other} = props;
 	const DefaultComponent = href ? 'a' : htmlFor ? 'label' : 'div';
 	const Component = component || DefaultComponent;
 	const cls = classNames({
 		'ui-cell': true,
+		'ui-cell-link': link,
 		[className]: className
 	});
 	return (
 		<Component
 			className={cls}
 			href={href}
-			htmlFor={htmlFor}
 			{...other}
 		>
 			{children}
@@ -26,10 +26,12 @@ const Cell = (props) => {
 };
 
 Cell.propTypes = {
-	component: PropTypes.func
-}
+	component: PropTypes.func,
+	link: PropTypes.bool
+};
 
 Cell.defaultProps = {
+	link: false
 };
 
 export default Cell;

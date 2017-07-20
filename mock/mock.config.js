@@ -5,7 +5,7 @@ module.exports = function(imitator) {
     // /
 	imitator({
         action: 'get',
-		url: '/',
+		url: '*',
         result: {
             'data': 'bugfix'
         }

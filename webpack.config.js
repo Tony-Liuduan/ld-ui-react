@@ -70,15 +70,17 @@ module.exports = {
             html-webpack-plugin也可以不指定template参数, 它会使用默认的html模板.
         */
         new HtmlWebpackPlugin({favicon: './src/imgs/icons/favicon.ico', template: './public/index.html', filename: './index.html', chunks: ['index'], inject: 'body'}),
-        new OpenBrowserPlugin({url: 'http://localhost:8089/'})
+        new OpenBrowserPlugin({url: 'http://0.0.0.0:3005/'})
     ],
     // contentBase 属性是虚拟路径，启动编译生成index.html,index.js 文件服务的虚拟根目录，
     // 若没有设置代理，指向html文件根目录
     devServer: {
         contentBase: __dirname + '/public',
         inline: true,
-        port: 8089,
-        host: '127.0.0.1',
+        port: 3005,
+        open: true,
+        host: '0.0.0.0',
+        disableHostCheck: true,
         /*
             historyApiFallback用来配置页面的重定向
             SPA的入口是一个统一的html文件, 比如http://localhost:8010/foo
@@ -89,7 +91,7 @@ module.exports = {
         noInfo: false,
         proxy: {
             '*': {
-                target: 'http://127.0.0.1:8050',
+                target: 'http://0.0.0.0:8050',
                 secure: false
             }
         }

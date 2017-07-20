@@ -4,6 +4,7 @@ import NavBar from './NavBar/index';
 import NavBarRouter from './NavBarRouter/index';
 import TabBar from './TabBar/index';
 import List from './List/index';
+import Input from './Input/index';
 
 export default {
 	Home,
@@ -11,5 +12,6 @@ export default {
 	NavBar,
 	NavBarRouter,
 	TabBar,
-	List
+	List,
+	Input
 };
