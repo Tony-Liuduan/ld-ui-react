@@ -11,6 +11,7 @@ import CellClear from './CellClear';
 import CellTip from './CellTip';
 import Form from './Form';
 import FormCell from './FormCell';
+import FormHeader from './FormHeader';
 
 
 export default {
@@ -26,5 +27,6 @@ export default {
 	CellClear,
 	CellTip,
 	Form,
-	FormCell
+	FormCell,
+	FormHeader
 };

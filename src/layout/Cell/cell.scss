@@ -17,16 +17,20 @@
 		font-size: 12px;
 		padding: 10px 14px 8px;
 		color: #a5a5a5;	
-
-		& + .ui-cell {
-			
-			&:before {
-				display: none;
-			}
-		}
 	}
 
 }
+
+.ui-cells-title + .ui-cell,
+.ui-form-header + .ui-cell {
+	&:before {
+		display: none;
+	}
+}
+
+
+
+
 
 .ui-cell {
 	background-color: #FFFFFF;
@@ -237,5 +241,26 @@
 	}
 
 } 
+
+.ui-form {
+	&-header {
+		position: relative;
+		color: #666;
+		font-weight: 700;
+		background-color: #fff;
+		padding: 20px 0 10px 10px;
+		font-size: 14px;
+
+		&:before {
+			position: absolute;
+			content: '';
+			width: 2px;
+			height: 20px;
+			left: 0;
+			top: 20px;
+			background-color: #ff6c4a;
+		}
+	}
+}
 
 

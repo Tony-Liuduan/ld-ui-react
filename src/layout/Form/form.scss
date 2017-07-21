@@ -127,7 +127,7 @@ label.ui-cell > * , .ui-agreement label > * { pointer-events: none; }
 			position: absolute;
 			top: 0;
 			left: 0;
-			width: 50px;
+			width: 48px;
 			height: 24px;
 			border-radius: 12px;
 		}
@@ -245,4 +245,48 @@ label.ui-cell > * , .ui-agreement label > * { pointer-events: none; }
 	}
 }
 
+.ui-vcode {
+	min-width: 84px;
+    height: 24px;
+    overflow: hidden;
+    margin-left: 4px;
+    text-align: center;
+
+    &:before {
+    	float: left;
+    	content: "";
+    	width: 1px;
+    	height: 24px;
+    	background-color: #ddd;
+    }
+
+    button {
+    	width: 80px;
+    	height: 24px;
+    	line-height: 24px;
+    	color: #ff552e;
+    	font-size: 12px;
+
+    	img {
+    		display: block;
+    		height: 100%;
+    		width: 100%;
+    	}
+    }
+}
+
+.ui-textarea {
+	display: block;
+    resize: none;
+    width: 100%;
+    min-height: 50px;
+    font-size: 14px;
+
+    &-counter {
+    	color: #B2B2B2;
+    	text-align: right;
+    	font-size: 12px;
+    	line-height: 16px;
+	}
+}
 
