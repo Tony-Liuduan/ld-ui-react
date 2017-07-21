@@ -139,7 +139,7 @@
 				width: 8px;
 				height: 8px;
 				content: '';
-				border: 2px solid #c8c8c8;
+				border: 2px solid #ff6c4a;
 				border-top: 0 none;
 				border-left: 0 none;
 			}
@@ -206,10 +206,14 @@
 		}
 	}
 
-	&-switch,
+	&-switch {
+		padding-top: 11px;
+		padding-bottom: 11px;
+	}
+
 	&-checkboxInline {
-		padding-top: 9px;
-		padding-bottom: 9px;
+		padding-top: 10px;
+		padding-bottom: 10px;
 	}
 
 	&-select {
@@ -230,8 +234,8 @@
 				padding-left: 0;
 			}
 		}
-	}	
+	}
+
 } 
 
-label.ui-cell > * , label.ui-agree > * { pointer-events: none; }
 

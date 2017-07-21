@@ -5,6 +5,8 @@ input, button, textarea, select {
     background-color: transparent;
 }
 
+label.ui-cell > * , .ui-agreement label > * { pointer-events: none; }
+
 .ui-inputcheck {
 
 	&-wrapper {
@@ -53,29 +55,36 @@ input, button, textarea, select {
 
 	&-label {
 		font-size: 14px;
-		margin-left: 20px;
+		width: 80px;
+    	height: 30px;
 		& > * { pointer-events: none; }
 
 		.ui-inputcheck-icon {
-			line-height: 1;
-			padding: 8px 16px;
 			background: #F8F8F8;
-			border-radius: 100px;
+			border-radius: 15px;
 			border: 1px solid #F8F8F8;
 			box-sizing: border-box;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100%;
 		}
 
 		.ui-inputcheck-input:checked + .ui-inputcheck-icon,
 		.ui-inputcheck-input:checked:disabled + .ui-inputcheck-icon {
-			background: #FFF8F7;
-			color: #FF552E;
-			border: 1px solid #FF552E;
+			color: #ff552e;
+    		background-color: #fff8f7;
+    		border: 1px solid #ff552e;		
 		}
 
 		.ui-inputcheck-input:disabled + .ui-inputcheck-icon {
 			background: #F8F8F8;
 			color: #999999;
 			border: 1px solid #999999;
+		}
+
+		& + .ui-inputcheck-label {
+			margin-left: 5px;
 		}
 
 	}
@@ -96,17 +105,18 @@ input, button, textarea, select {
 .ui-inputswitch {
 	display: flex;
 	align-items: center;
-	height: 32px;
+	height: 28px;
 	width: 52px;
+	box-sizing: border-box;
 
 	&-input {
 		height: 100%;
 		width: 100%;
 		position: relative;
 		display: block;
-		border: 1px solid #DFDFDF;
+		border: 2px solid #DFDFDF;
 		outline: 0;
-		border-radius: 16px;
+		border-radius: 14px;
 		box-sizing: border-box;
 		background-color: #DFDFDF;
 		transition: background-color 0.1s, border 0.1s;
@@ -118,8 +128,8 @@ input, button, textarea, select {
 			top: 0;
 			left: 0;
 			width: 50px;
-			height: 30px;
-			border-radius: 15px;
+			height: 24px;
+			border-radius: 12px;
 		}
 
 		&:before {
@@ -128,7 +138,7 @@ input, button, textarea, select {
 		}
 
 		&:after {
-			width: 30px;
+			width: 24px;
 			background-color: #FFFFFF;
 			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 			transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
@@ -136,24 +146,24 @@ input, button, textarea, select {
 
 		&:checked,
 		&:checked:disabled {
-			border-color: #FF552E;
-			background-color: #FF552E;
+			border-color: #f7b033;
+			background-color: #f7b033;
 
 			&:before {
 				transform: scale(0);
 			}
 
 			&:after {
-				transform: translateX(20px);
+				transform: translateX(24px);
 			}
 		}
 
 		&:disabled {
-			border-color: #ccc;
-			background-color: #ccc;
+			border-color: #b5b5b5;
+			background-color: #b5b5b5;
 
 			&:before {
-				background-color: #ccc;
+				background-color: #b5b5b5;
 			}
 		}
 	}
@@ -187,6 +197,52 @@ input, button, textarea, select {
 		right: 38px;
 	}
 
+}
+
+.ui-agreement {
+    padding: 5px 14px;
+    font-size: 12px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    line-height: 24px;
+
+    label {
+    	height: 24px;
+    	margin-right: 4px;
+   	}
+
+	&-checkbox {
+		position: relative;
+		display: inline-block;
+		border-radius: 2px;
+		border: 1px solid #e8e8e8;
+		width: 12px;
+		height: 12px;
+		vertical-align: middle;
+		margin-right: 5px;
+		margin-top: -3px;
+		box-sizing: border-box;
+
+		&:checked:before {
+			position: absolute;
+			content: '';
+			width: 7px;
+			height: 3px;
+			display: inline-block;
+			border-bottom: 1px solid #37acf4;
+			border-left: 1px solid #37acf4;
+			transform: rotate(-45deg);
+			top: 3px;
+			left: 2px;
+		}
+	}
+
+	a, button {
+    	display: inline-block;
+    	color: #37acf4;
+	}
 }
 
 

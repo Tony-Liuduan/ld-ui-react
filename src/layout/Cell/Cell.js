@@ -16,6 +16,7 @@ const Cell = (props) => {
 	return (
 		<Component
 			className={cls}
+			htmlFor={htmlFor}
 			href={href}
 			{...other}
 		>

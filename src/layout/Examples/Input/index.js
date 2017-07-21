@@ -30,7 +30,6 @@ class InputPage extends React.Component {
 			<Page title="Input" subTitle="表单输入">
 			<form action="">
 				{/*================  radio  =================*/}
-				<Cells>
 					<CellsTitle>Radio</CellsTitle>
 					<FormCell radio>
 						<CellContent>Option 1</CellContent>
@@ -47,9 +46,7 @@ class InputPage extends React.Component {
 					<Cell link>
 						<CellContent>More</CellContent>
 					</Cell>
-				</Cells>
 				{/*================  radio-inline  =================*/}
-				<Cells>
 					<CellsTitle>Radio-inline</CellsTitle>
 					<FormCell radioInline>
 						<CellLabel>性别</CellLabel>
@@ -57,9 +54,7 @@ class InputPage extends React.Component {
 						<Radio name="sex" value="0" inline>女</Radio>
 						<Radio name="sex" value="2" disabled inline>其他</Radio>
 					</FormCell>	
-				</Cells>
 				{/*================  checkbox  =================*/}
-				<Cells>
 					<CellsTitle>Checkbox</CellsTitle>
 					<FormCell checkbox>
 						<CellContent>Option 1</CellContent>
@@ -80,9 +75,7 @@ class InputPage extends React.Component {
 					<Cell link>
 						<CellContent>More</CellContent>
 					</Cell>
-				</Cells>
 				{/*================  checkbox-inline  =================*/}
-				<Cells>
 					<CellsTitle>Checkbox-inline</CellsTitle>
 					<FormCell checkboxInline>
 						<CellLabel>汽车</CellLabel>
@@ -90,9 +83,7 @@ class InputPage extends React.Component {
 						<Checkbox name="car2" value="1" inline>宝马</Checkbox>
 						<Checkbox name="car3" value="2" inline>奥迪</Checkbox>
 					</FormCell>				
-				</Cells>
-				{/*================  checkbox-inline  =================*/}
-				<Cells>
+				{/*================  switch  =================*/}
 					<CellsTitle>Switch</CellsTitle>
 					<FormCell switch>
 						<CellContent>Switch normal</CellContent>
@@ -106,9 +97,7 @@ class InputPage extends React.Component {
 						<CellContent>Switch disabled</CellContent>
 						<Switch name="switch disabled" value="switch" disabled/>
 					</FormCell>
-				</Cells>
-				{/*================  checkbox-inline  =================*/}
-				<Cells>
+				{/*================  select  =================*/}
 					<CellsTitle>Select</CellsTitle>
 					<FormCell select selectPos="after">
 						<CellLabel>Select after</CellLabel>
@@ -158,7 +147,13 @@ class InputPage extends React.Component {
 						</CellControl>
 						<CellClear></CellClear>
 					</FormCell>
-				</Cells>
+				{/*================  agree  =================*/}
+				<Agreement label="同意">
+					<a>《车分期征信查询授权书》</a>
+					<a>《车分期征信查询授权书》</a>
+					<a>《车分期征信查询授权书》</a>
+					<a>《车分期征信查询授权书》</a>
+				</Agreement>
 				<input type="submit" value="submit" height="20" width="50"/>
 			</form>
 			</Page>
