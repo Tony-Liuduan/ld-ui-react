@@ -1,0 +1,17 @@
+.ui-picker {
+	position: fixed;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+	z-index: 5000;
+	transform: translate(0, 100%);
+	transition: transform .3s;
+	background-color: #fff;
+
+	&-body {
+		max-height: 300px;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+}
+

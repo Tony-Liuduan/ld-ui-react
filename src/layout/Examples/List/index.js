@@ -34,7 +34,7 @@ const ListPage = (props) => {
 				<Cell>
 					<CellContent>CellContent</CellContent>
 					<CellExtra>CellExtra</CellExtra>
-					<CellArrow direction="bottom" />
+					<CellArrow direction="down" />
 				</Cell>
 
 				<Cell>
@@ -61,7 +61,7 @@ const ListPage = (props) => {
 					<CellLabel>CellLabel</CellLabel>
 					<CellControl>CellControl</CellControl>
 					<CellClear/>
-					<CellArrow direction="bottom"/>
+					<CellArrow direction="down"/>
 				</Cell>
 
 				<Cell>

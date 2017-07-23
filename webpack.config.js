@@ -78,7 +78,6 @@ module.exports = {
         contentBase: __dirname + '/public',
         inline: true,
         port: 3005,
-        open: true,
         host: '0.0.0.0',
         disableHostCheck: true,
         /*

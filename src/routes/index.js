@@ -11,8 +11,10 @@ const {
 	NavBar,
 	NavBarRouter,
 	TabBar,
+	Navigation,
 	List,
-	Input
+	Input,
+	Picker,
 } = Layout;
 
 export default class Routers extends Component {
@@ -29,8 +31,10 @@ export default class Routers extends Component {
     		        	<Route path="/navbar/router/:tabIndex" component={Button}></Route>    		
     		        </Route>
     		        <Route path="tabbar" component={TabBar} />
+    		        <Route path="navigation" component={Navigation} /> 
     		        <Route path="list" component={List} />
     		        <Route path="input" component={Input} />
+    		        <Route path="picker" component={Picker} />
        			</Route>
 			</Router>
 		); 

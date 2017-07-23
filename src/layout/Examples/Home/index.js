@@ -138,6 +138,9 @@ const UImenus = [
             {
                 label: 'TabBar',
                 to: '/tabbar'
+            },{
+                label: 'Navigation',
+                to: '/navigation'
             }
         ]
     },

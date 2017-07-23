@@ -22,7 +22,7 @@ CellArrow.propTypes = {
 };
 
 CellArrow.defaultProps = {
-	direction: 'right' // right bottom
+	direction: 'right' // right down left
 };
 
 export default CellArrow;

@@ -24,6 +24,7 @@ import {
 	FormCell,
 	FormHeader
 } from '../../Cell/index';
+import {Button, ButtonArea} from '../../Button/index';
 
 class InputPage extends React.Component {
 	render() {
@@ -109,7 +110,7 @@ class InputPage extends React.Component {
 							<option value="1">集中交易市场</option>
 							<option value="2">非集中交易市场</option>
 						</Select>
-						<CellArrow direction="bottom"></CellArrow>
+						<CellArrow direction="down"></CellArrow>
 					</CellControl>
 				</FormCell>
 				<FormCell select>
@@ -142,7 +143,7 @@ class InputPage extends React.Component {
 								}
 							]}
 						/>
-						<CellArrow direction="bottom"></CellArrow>
+						<CellArrow direction="down"></CellArrow>
 					</CellLabel>
 					<CellControl>
 						<input type="tel" placeholder="Enter Phone" />
@@ -202,8 +203,11 @@ class InputPage extends React.Component {
 					<a>《车分期征信查询授权书》</a>
 					<a>《车分期征信查询授权书》</a>
 				</Agreement>
-				<input type="submit" value="submit" height="20" width="50"/>
+				{/*<input type="submit" value="submit" height="20" width="50"/>*/}
 			</form>
+			<ButtonArea space>
+				<Button size="large" type="orange-white">提 交</Button>
+			</ButtonArea>	
 			</Page>
 		);
 	}

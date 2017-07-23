@@ -1,0 +1,52 @@
+.ui-navigation {
+	line-height: 24px;
+    height: 44px;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    background-color: #f6f6f6;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    position: relative;
+
+    &-title {
+    	flex: 1;
+    	text-align: center;
+        color: #333;
+    }
+
+    &-left, &-right {
+        position: absolute;
+        top: 10px;
+     	min-width: 44px;
+        box-sizing: border-box;
+    }
+
+    &-left {
+        left: 0;
+        padding-left: 14px;
+
+        .ui-cell-arrow {
+            justify-content: start;
+
+            span {
+                width: 14px;
+                height: 14px;
+
+                &:before {
+                    width: 10px;
+                    height: 10px;
+                    border-color: #666;
+                }
+            }
+
+        }
+    }
+
+    &-right {
+        right: 0;
+        padding-right: 14px;
+    	text-align: right;
+    	color: #37acf4;
+    }
+}
