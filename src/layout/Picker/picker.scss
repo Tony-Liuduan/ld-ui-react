@@ -12,6 +12,21 @@
 		max-height: 300px;
 		overflow-y: auto;
 		-webkit-overflow-scrolling: touch;
+		input {
+			font-size: 14px;
+		}
+	}
+
+	&-selected:after {
+		position: absolute;
+		right: 14px;
+		width: 10px;
+		height: 6px;
+		margin-top: 6px;
+		content: '';
+		border: 1px solid #19b39c;
+		border-top: 0 none;
+		border-right: 0 none;
+		transform: rotate(-45deg);	
 	}
 }
-
