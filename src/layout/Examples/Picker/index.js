@@ -70,9 +70,13 @@ class PickerPage extends Component {
 			tempValue = [].concat();
 			tempCodes = [].concat();
 		}
+
+		if (!!tempValue[message.index]) {
+			tempValue.splice(message.index, 1);
+		}
 		tempValue = tempValue.concat([message.label]);
 		tempCodes = tempCodes.concat([message.code]);
-
+	
 		lastIndex ? this.setState({cityValue: tempValue.join(' '), cityCodes: tempCodes}) : false;
 		if (cb) cb();
 	}

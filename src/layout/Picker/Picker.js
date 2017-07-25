@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import classNames from 'classnames';
 
-import {Cells, Cell, CellArrow, CellContent, FormCell} from '../Cell/index';
+import {Cell} from '../Cell/index';
 import Mask from '../Mask/index';
 import Navigation from '../Navigation/index';
 
@@ -13,32 +13,42 @@ class Picker extends Component {
 	static propTypes = {
 		index: PropTypes.number,
 		show: PropTypes.bool,
+		onShow: PropTypes.func,
+		onHide: PropTypes.func,
+		onCancel: PropTypes.func,
+		onSelect: PropTypes.func,
 		data: PropTypes.array,
+		selectCitys: PropTypes.array
 	};
 
 	static defaultProps = {
 		index: 0,
 		show: false,
 		data: [],
+		selectCitys: []
 	};
-
+	
 	constructor(props) {
 		super(props);
 		this.state = {
 			close: false,
-			selectedValue: ''
+			selectedValue: this.props.selectCitys[this.props.index],
+			scrollTop: 0
 		};
 	}
 
-	componentDidUpdate() {
-
+	componentDidUpdate(prevProps, prevState) {
+		if (this.props.index == 0 && this.pickerBody) {
+			this.pickerBody.scrollTop = this.state.scrollTop;		
+		}
 	}
 
 	handleClose(cb, direction='right') {
 		// 首个picker || 按左箭头 显示动画
 		if (this.props.index === 0 || direction == 'left') {
 			this.setState({
-				close: true
+				close: true,
+				selectedValue: this.props.selectCitys[this.props.index]
 			}, () => setTimeout(() => {
 				this.setState({
 					close: false
@@ -51,7 +61,10 @@ class Picker extends Component {
 	}
 
 	handleSelectItem(e, cb) {
-		this.setState({selectedValue: JSON.parse(e.target.value).code});
+		this.setState({
+			selectedValue: JSON.parse(e.target.dataset.value).code,
+			scrollTop: this.pickerBody.scrollTop // 记录scrollTop
+		});
 		if (cb) cb();
 	}
 
@@ -67,19 +80,23 @@ class Picker extends Component {
 
 	renderPickerBody(data, onSelect, cb, selectCity) {
 		return data.map((item, index) => {
-			const selectCls = classNames({'ui-picker-selected': selectCity ? selectCity === item.code : this.state.selectedValue === item.code});
+			item = Object.assign({}, item, {index: this.props.index});
+			const selectCls = classNames({'ui-picker-selected': this.state.selectedValue === item.code});
 			return (		
-				<FormCell radio key={index} className={selectCls} onClick={(e) => this.handleSelectItem(e, () => onSelect(item, cb))}>
-					<CellContent>
-						<input type="radio" readOnly value={JSON.stringify(item)} />
+				<Cell 
+					key={index} 
+					className={selectCls} 
+					data-value={JSON.stringify(item)}
+					onClick={(e) => this.handleSelectItem(e, () => onSelect(item, cb))}
+				>
 						{item.label}
-					</CellContent>
-				</FormCell>
+				</Cell>
 			);
 		});
 	}
 
 	render() {
+		console.log(this.props.selectCitys[this.props.index])
 		const {index, show, onShow, onHide, onCancel, onSelect, data, selectCitys, className, ...other} = this.props;
 		const {close} = this.state;
 		const cls = classNames({
@@ -110,13 +127,12 @@ class Picker extends Component {
 						rightContent: '取消'
 					}];
 		const transparent = index === 0 ? false : true;
-		console.log(selectCitys[index]);
 		return show ? (
 			<div>
 				<Mask className={maskCls} transparent={transparent} onClick={this.handleClose.bind(this, onCancel)}/>
 				<div className={cls} {...other}>
 					{this.renderNavigation(Navgroup[index])}
-					<div className="ui-picker-body" ref="">
+					<div className="ui-picker-body" ref={node => {this.pickerBody = node}}>
 						{
 							index == Navgroup.length-1 
 								? this.renderPickerBody(data, onSelect, onCancel, selectCitys[index])
@@ -126,7 +142,6 @@ class Picker extends Component {
 				</div>
 			</div>
 		) : false;
-
 	}
 };
 
