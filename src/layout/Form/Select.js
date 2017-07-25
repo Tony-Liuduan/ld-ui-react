@@ -23,11 +23,10 @@ class Select extends Component {
 	render() {
 		const {data, className, children, ...other} = this.props;
 		const cls = classNames({
-			'ui-inputselect': true,
-			'ui-selected': true
+			'ui-inputselect': true
 		}, className);
 		return (
-			<select className={cls} {...other}>
+			<select className={cls} {...other} >
 				{
 					data.length > 0 
 						? this.renderData(data)

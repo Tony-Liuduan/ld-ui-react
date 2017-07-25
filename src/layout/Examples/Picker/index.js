@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import classNames from 'classnames';
 import Page from '../../Page/index';
 import {
 	Cells,
@@ -11,19 +12,48 @@ import {
 } from '../../Cell/index';
 
 import {Picker} from '../../Picker/index';
+import {Post} from '../../Server/index';
 
-let tempValue = [];
+import {parseJsonData} from '../../Base/Js/utils';
+
+let tempValue = [], tempCodes = [];
+// input 提交name值
+const submitNames = ['liveProvinceCode', 'liveCityCode', 'liveDistrictCode'];
+// 定义各级picker名
+const picekerMap = {
+	0: 'picker_0',
+	1: 'picker_1',
+	2: 'picker_2'
+};
 class PickerPage extends Component {
 
 	state = {
-		showPicker_province: false,
-		showPicker_city: false,
-		showPicker_district : false,
-		cityValue: ''
+		picker_0: false,
+		picker_1: false,
+		picker_2 : false,
+		cityList: {},
+		cityValue: '',
+		cityCodes: []
 	};
 
-	handleShow(nextPicker) {
-		this.setState({[nextPicker]: true});
+	fetchList(picker, code='') {
+		const params = {type: picker, code: code};
+		Post('/citylist', params)
+		.then(data => {
+			this.setState({
+				cityList: Object.assign(this.state.cityList, {[picker]: parseJsonData(data)}),
+				[picker]: true
+			});
+		});
+	}
+
+	handleShow(nextPicker, code) {
+		// 判断省级数据列表是否已经获取
+		if (nextPicker === picekerMap[0] && (!!this.state.cityList[nextPicker])) {
+			this.setState({[nextPicker]: true});
+		} else {
+			this.fetchList(nextPicker, code);
+		}
 	}
 
 	handleHide(currentPicker) {
@@ -31,14 +61,29 @@ class PickerPage extends Component {
 	}
 	
 	handleCancel() {
-		this.setState({showPicker_province: false, showPicker_city: false, showPicker_district: false});
+		this.setState({picker_0: false, picker_1: false, picker_2: false});
 	}
 
-	handleSelect(label, cb, firstIndex, lastIndex) {
-		firstIndex ? tempValue = [] : false;
-		tempValue.push(label);
-		lastIndex ? this.setState({cityValue: tempValue.join(' ')}) : false;
+	handleSelect(message, cb, firstIndex, lastIndex) {
+		// 如果不是最后一个就不请求数据
+		if (firstIndex) {
+			tempValue = [].concat();
+			tempCodes = [].concat();
+		}
+		tempValue = tempValue.concat([message.label]);
+		tempCodes = tempCodes.concat([message.code]);
+
+		lastIndex ? this.setState({cityValue: tempValue.join(' '), cityCodes: tempCodes}) : false;
 		if (cb) cb();
+	}
+
+	renderInputCode(submitNames) {
+		const {cityCodes} = this.state;
+		return cityCodes.length > 0 
+			? submitNames.map((subname, index) => (
+				<input key={index} type="hidden" name={subname} value={cityCodes[index]} required="true" />
+			))
+			: false;
 	}
 
 	renderCityPicker(pickers) {
@@ -49,143 +94,30 @@ class PickerPage extends Component {
 				key={index}
 				index={index}
 				show={picker.show}
-				onShow={this.handleShow.bind(this, picker.nextPicker)}
-				onHide={this.handleHide.bind(this, picker.currentPicker)}
-				onCancel={this.handleCancel.bind(this)}
-				onSelect={(label, cb) => this.handleSelect(label, cb, firstIndex, lastIndex)}
-				selectCitys={this.state.cityValue.split(" ")}
+				onShow={e => this.handleShow(picker.nextPicker, tempCodes[index])}
+				onHide={e => this.handleHide(picker.currentPicker)}
+				onCancel={e => this.handleCancel()}
+				onSelect={(city, cb) => this.handleSelect(city, cb, firstIndex, lastIndex)}
+				selectCitys={this.state.cityCodes}
 				data={picker.data}
 			/>
 		});
 	}
 
-
 	render() {
-		const {showPicker_province, showPicker_city, showPicker_district, cityValue} = this.state;
-		const cityPickers = [{
-					show: showPicker_province,
-					currentPicker: 'showPicker_province',
-					nextPicker: 'showPicker_city',
-					data: [{
-							"label":"北京市",
-							"checked": true
-						},
-						{
-							"label":"天津市",
-						},
-						{
-							"label":"南京市",
-						},
-						{
-							"label":"广州市",
-						},
-						{
-							"label":"沈阳市",
-						},
-						{
-							"label":"太原市",
-						},
-						{
-							"label":"长沙市",
-						},
-						{
-							"label":"海南市",
-						},
-						{
-							"label":"兰州市",
-						},
-						{
-							"label":"西安市",
-						},
-						{
-							"label":"哈尔滨市",
-						},
-						{
-							"label":"吉林市",
-						}]
-				},{
-					show: showPicker_city,
-					currentPicker: 'showPicker_city',
-					nextPicker: 'showPicker_district',
-					data: [{
-						"label":"北京市",
-						},
-						{
-							"label":"天津市",
-						},
-						{
-							"label":"南京市",
-						},
-						{
-							"label":"广州市",
-						},
-						{
-							"label":"沈阳市",
-							"checked": true
-						},
-						{
-							"label":"太原市",
-						},
-						{
-							"label":"长沙市",
-						},
-						{
-							"label":"海南市",
-						},
-						{
-							"label":"兰州市",
-						},
-						{
-							"label":"西安市",
-						},
-						{
-							"label":"哈尔滨市",
-						},
-						{
-							"label":"吉林市",
-						}]
-				},{
-					show: showPicker_district,
-					currentPicker: 'showPicker_district',
-					nextPicker: '',
-					data: [{
-						"label":"北京市",
-						},
-						{
-							"label":"天津市",
-						},
-						{
-							"label":"南京市",
-						},
-						{
-							"label":"广州市",
-						},
-						{
-							"label":"沈阳市",
-						},
-						{
-							"label":"太原市",
-						},
-						{
-							"label":"长沙市",
-						},
-						{
-							"label":"海南市",
-							"checked": true
-						},
-						{
-							"label":"兰州市",
-						},
-						{
-							"label":"西安市",
-						},
-						{
-							"label":"哈尔滨市",
-						},
-						{
-							"label":"吉林市",
-						}]
-				}];
+		const {picker_0, picker_1, picker_2, cityList, cityValue} = this.state;
+		const cls = classNames({
+			'ui-inputselect': true,
+			'ui-placeholder': !cityValue
+		});
+		const cityPickers = [picker_0, picker_1, picker_2].map((picker, i) => {
+			return {
+				show: picker,
+				currentPicker: picekerMap[i],
+				nextPicker: picekerMap[i+1],
+				data: cityList[picekerMap[i]] || []
+			};
+		});
 		return (
 			<Page title="Picker" subTitle="多列选择器" className="picker">
 				<Cells>
@@ -194,16 +126,13 @@ class PickerPage extends Component {
 					<FormCell select selectPos="after">
 						<CellLabel>所在地区</CellLabel>
 						<CellControl>
-							<input 
-								type="text" 
-								placeholder="请选择省市区"
-								readOnly 
-								className="ui-inputselect" 
-								style={{height: "50px"}} 
-								onClick={this.handleShow.bind(this, 'showPicker_province')}
-								value={cityValue}
-							/>							
-							<CellArrow direction="down" />
+							<div className={cls} onClick={e => this.handleShow(picekerMap[0])}>	
+								{cityValue == '' ? '请选择省市区' : cityValue}	
+							</div>					
+							<CellArrow direction="down"></CellArrow>
+							<div>
+								{this.renderInputCode(submitNames)}							
+							</div>											
 						</CellControl>
 					</FormCell>
 				</Cells>

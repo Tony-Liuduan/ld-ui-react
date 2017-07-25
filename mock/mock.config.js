@@ -5,7 +5,7 @@ module.exports = function(imitator) {
     // /
 	imitator({
         action: 'get',
-		url: '*',
+		url: '/',
         result: {
             'data': 'bugfix'
         }
@@ -15,5 +15,11 @@ module.exports = function(imitator) {
 	imitator({
 		url: '/test',
 		result: imitator.file('./data/test.json')
+	});
+
+	// /test
+	imitator({
+		url: '/citylist',
+		result: imitator.file('./data/citylist.json')
 	});
 }

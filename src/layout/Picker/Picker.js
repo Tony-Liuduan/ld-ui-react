@@ -30,12 +30,8 @@ class Picker extends Component {
 		};
 	}
 
-	componentDidMount() {
-		this.props.data.map(item => {
-			if (item.checked) {
-				this.setState({selectedValue: item.label})
-			}
-		});
+	componentDidUpdate() {
+
 	}
 
 	handleClose(cb, direction='right') {
@@ -55,7 +51,7 @@ class Picker extends Component {
 	}
 
 	handleSelectItem(e, cb) {
-		this.setState({selectedValue: e.target.value});
+		this.setState({selectedValue: JSON.parse(e.target.value).code});
 		if (cb) cb();
 	}
 
@@ -69,14 +65,15 @@ class Picker extends Component {
 				/>;
 	}
 
-	renderPickerBody(data, onSelect, cb) {
+	renderPickerBody(data, onSelect, cb, selectCity) {
 		return data.map((item, index) => {
-			const selectCls = classNames({'ui-picker-selected': this.state.selectedValue === item.label});
-			item.checked = this.state.selectedValue === item.label;
-
-			return (
-				<FormCell radio key={index} className={selectCls} onClick={(e) => this.handleSelectItem(e, () => onSelect(item.label, cb))}>
-					<CellContent><input readOnly value={item.label} /></CellContent>
+			const selectCls = classNames({'ui-picker-selected': selectCity ? selectCity === item.code : this.state.selectedValue === item.code});
+			return (		
+				<FormCell radio key={index} className={selectCls} onClick={(e) => this.handleSelectItem(e, () => onSelect(item, cb))}>
+					<CellContent>
+						<input type="radio" readOnly value={JSON.stringify(item)} />
+						{item.label}
+					</CellContent>
 				</FormCell>
 			);
 		});
@@ -113,17 +110,17 @@ class Picker extends Component {
 						rightContent: '取消'
 					}];
 		const transparent = index === 0 ? false : true;
-
+		console.log(selectCitys[index]);
 		return show ? (
 			<div>
 				<Mask className={maskCls} transparent={transparent} onClick={this.handleClose.bind(this, onCancel)}/>
 				<div className={cls} {...other}>
 					{this.renderNavigation(Navgroup[index])}
-					<div className="ui-picker-body">
+					<div className="ui-picker-body" ref="">
 						{
 							index == Navgroup.length-1 
-								? this.renderPickerBody(data, onSelect, onCancel)
-								: this.renderPickerBody(data, onSelect, onShow) 
+								? this.renderPickerBody(data, onSelect, onCancel, selectCitys[index])
+								: this.renderPickerBody(data, onSelect, onShow, selectCitys[index]) 
 						}
 					</div>
 				</div>
