@@ -37,6 +37,13 @@ class Picker extends Component {
 		};
 	}
 
+	componentWillReceiveProps(nextProps) {
+		// 判断是否关闭picker，如果关闭则将当前的 selectedValue 重置为 已选中的，而不是点过的
+		if (!nextProps.show) {
+			this.setState({selectedValue: nextProps.selectCitys[nextProps.index]})
+		}
+	}
+
 	componentDidUpdate(prevProps, prevState) {
 		if (this.props.index == 0 && this.pickerBody) {
 			this.pickerBody.scrollTop = this.state.scrollTop;		
@@ -47,8 +54,7 @@ class Picker extends Component {
 		// 首个picker || 按左箭头 显示动画
 		if (this.props.index === 0 || direction == 'left') {
 			this.setState({
-				close: true,
-				selectedValue: this.props.selectCitys[this.props.index]
+				close: true
 			}, () => setTimeout(() => {
 				this.setState({
 					close: false
@@ -96,7 +102,7 @@ class Picker extends Component {
 	}
 
 	render() {
-		console.log(this.props.selectCitys[this.props.index])
+		//console.log(this.props.selectCitys[this.props.index])
 		const {index, show, onShow, onHide, onCancel, onSelect, data, selectCitys, className, ...other} = this.props;
 		const {close} = this.state;
 		const cls = classNames({
