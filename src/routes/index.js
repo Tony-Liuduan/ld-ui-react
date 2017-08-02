@@ -15,6 +15,7 @@ const {
 	List,
 	Input,
 	Picker,
+	Hoc
 } = Layout;
 
 export default class Routers extends Component {
@@ -35,7 +36,7 @@ export default class Routers extends Component {
     		        <Route path="list" component={List} />
     		        <Route path="input" component={Input} />
     		        <Route path="picker" component={Picker} />
-       			</Route>
+          		</Route>
 			</Router>
 		); 
 	}

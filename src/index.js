@@ -6,9 +6,9 @@ import FastClick from 'fastclick';
 
 import Routers from './routes';
 
-window.addEventListener('load', () => {
-  FastClick.attach(document.body);
-});
+// window.addEventListener('load', () => {
+//   FastClick.attach(document.body);
+// });
 
 ReactDOM.render(    
 	<Routers />

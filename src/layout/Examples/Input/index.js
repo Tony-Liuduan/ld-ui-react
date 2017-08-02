@@ -32,6 +32,15 @@ class InputPage extends React.Component {
 			<Page title="Input" subTitle="表单输入">
 			<form action="">
 				<FormHeader>个人信息</FormHeader>
+			{/*================  input  =================*/}
+				<CellsTitle>Input</CellsTitle>
+				<FormCell>
+					<CellLabel>InputLabel</CellLabel>
+					<CellControl> 
+						<Input type="text" placeholder="please input" autoFocus />
+					</CellControl>
+					<CellClear />
+				</FormCell>
 			{/*================  radio  =================*/}
 				<CellsTitle>Radio</CellsTitle>
 				<FormCell radio>
@@ -146,7 +155,7 @@ class InputPage extends React.Component {
 						<CellArrow direction="down"></CellArrow>
 					</CellLabel>
 					<CellControl>
-						<input type="tel" placeholder="Enter Phone" />
+						<Input type="tel" placeholder="Enter Phone" />
 					</CellControl>
 					<CellClear></CellClear>
 				</FormCell>
@@ -155,7 +164,7 @@ class InputPage extends React.Component {
 				<FormCell>
 					<CellLabel>验证码</CellLabel>
 					<CellControl>
-						<input type="number" defaultValue="0987" />
+						<Input type="number" defaultValue="0987" />
 					</CellControl>
 					<CellClear />
 					<VCode>获取验证码</VCode>
@@ -165,7 +174,7 @@ class InputPage extends React.Component {
 				<FormCell>
 					<CellLabel>验证码</CellLabel>
 					<CellControl>
-						<input type="number" defaultValue="1234" />
+						<Input type="number" defaultValue="1234" />
 					</CellControl>
 					<CellClear />
 					<VCode>Send</VCode>
@@ -175,13 +184,13 @@ class InputPage extends React.Component {
 				<FormCell>
 					<CellLabel>Date</CellLabel>
 					<CellControl>
-						<input type="date" />
+						<Input type="date" />
 					</CellControl>
 				</FormCell>
 				<FormCell>
 					<CellLabel>Datetime</CellLabel>
 					<CellControl>
-						<input type="datetime-local" />
+						<Input type="datetime-local" />
 					</CellControl>
 				</FormCell>
 			{/*================  textarea  =================*/}
