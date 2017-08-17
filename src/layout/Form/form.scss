@@ -246,47 +246,47 @@ label.ui-cell > * , .ui-agreement label > * { pointer-events: none; }
 }
 
 .ui-vcode {
-	min-width: 84px;
-    height: 24px;
-    overflow: hidden;
-    margin-left: 4px;
-    text-align: center;
+	min-width: 80px;
+	text-align: center;
+	position: relative;
 
-    &:before {
-    	float: left;
-    	content: "";
-    	width: 1px;
-    	height: 24px;
-    	background-color: #ddd;
-    }
+	&:before {
+		position: absolute;
+		left: 0;
+		top: -13px;
+		bottom: -13px;
+		width: 1px;
+		background-color: #f3f3f3;
+		content: '';
+		transform-origin: 0 0;
+		transform: scaleX(0.5);
+	}
 
-    button {
-    	width: 80px;
-    	height: 24px;
-    	line-height: 24px;
-    	color: #ff552e;
-    	font-size: 12px;
+	button {
+		color: #ff552e;
+		font-size: 14px;
+		padding: 0 15px;
 
-    	img {
-    		display: block;
-    		height: 100%;
-    		width: 100%;
-    	}
-    }
+		img {
+			display: block;
+			height: 100%;
+			width: 100%;
+		}
+	}
 }
 
 .ui-textarea {
 	display: block;
-    resize: none;
-    width: 100%;
-    min-height: 50px;
-    font-size: 14px;
+	resize: none;
+	width: 100%;
+	min-height: 50px;
+	font-size: 14px;
 
-    &-counter {
-    	color: #B2B2B2;
-    	text-align: right;
-    	font-size: 12px;
-    	line-height: 16px;
+	&-counter {
+		color: #B2B2B2;
+		text-align: right;
+		font-size: 12px;
+		line-height: 16px;
 	}
 }
 

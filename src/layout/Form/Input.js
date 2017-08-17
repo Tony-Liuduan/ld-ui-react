@@ -39,35 +39,42 @@ class Input extends Component {
 
 	onInputChange(e) {
 		e.persist(); // 在React.js中执行去抖动
-
-		this.setState({
-			value: e.target.value
-		})
+		this.setState({value: e.target.value}, this.autoShowClear(e)); // 自动显示隐藏clear btn
 		if (this.props.onChange) this.props.onChange(e);
 	}
 
 	onInputFocus(e) {
 		e.persist(); // 在React.js中执行去抖动
-
-		this.setState({
-			focused: true,
-		}, () => {
-			if (this.context.formFocus) this.context.formFocus(this.state.focused);
-		});
-
+		this.autoShowClear(); // 自动显示clear btn
 		if (this.props.onFocus) this.props.onFocus(e);
 	}
 
 	onInputBlur(e) {
 		e.persist(); // 在React.js中执行去抖动
-
+		this.autoHiddenClear()  // 自动隐藏clear btn
+		if (this.props.onBlur) this.props.onBlur(e);
+	}
+	// 自动显示clear btn 当没有value时不显示clear btn
+	autoShowClear() {
+		setTimeout(() => {
+			if (!!this.state.value) {
+				this.setState({
+					focused: true,
+				}, () => {
+					if (this.context.formFocus) this.context.formFocus(this.state.focused);
+				});
+			} else {
+				this.autoHiddenClear();
+			}
+		}, 0)
+	}
+	// 自动取消clear btn
+	autoHiddenClear() {
 		this.setState({
 			focused: false,
 		}, () => {
 			if (this.context.formBlur) this.context.formBlur(this.state.focused);
 		});
-
-		if (this.props.onBlur) this.props.onBlur(e);
 	}
 
 	render() {
