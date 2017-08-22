@@ -13,7 +13,7 @@ class VCode extends Component {
 	};
 
 	static defaultProps = {
-		second: 6,
+		second: 60,
 		suffixText: "秒",
 		onClick: () => {console.log('click')}
 	};

@@ -11,6 +11,8 @@ class CellClear extends Component {
 	};
 
 	handleClick(e) {
+		// 按钮不显示状态不可点
+		if (!this.context.showCellClear) return;
 		this.context.handleCellClear(true);
 		if (this.props.onClick) this.props.onClick(e);
 	}
