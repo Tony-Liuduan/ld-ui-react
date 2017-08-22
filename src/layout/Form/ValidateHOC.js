@@ -55,7 +55,7 @@ const ValidateHoc = (Input) =>
 					validHook: this.validHook.bind(this),
 					showHint: this.showHint.bind(this)
 				}
-			}, () => {event.emit('validate', {target: this.target, validProps: Object.assign({}, validProps), validation: Object.assign({}, this.state.validation)})});
+			}, () => {event.emit('validate', {target: this.target, validation: Object.assign({}, this.state.validation)})});
 		}
 		// 验证value是否通过 返回 true || false
 		validHook(val) {

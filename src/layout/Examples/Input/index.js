@@ -45,7 +45,7 @@ class InputPage extends React.Component {
 				<FormCell>
 					<CellLabel>InputLabel</CellLabel>
 					<CellControl> 
-						<Input name="a" type="text" placeholder="please input" autoFocus required validate={{validType: 'sms[4]', hint: "请输入xxx", rules: 1, required: true}}/>
+						<Input name="a" type="text" placeholder="please input" required validate={{validType: 'sms[4]', hint: "请输入xxx", rules: 1, required: true}}/>
 					</CellControl>
 					<CellClear />
 				</FormCell>

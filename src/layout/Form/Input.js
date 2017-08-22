@@ -47,7 +47,7 @@ class Input extends Component {
 		if (this.context.clearInputValue) {
 			this.context.handleCellClear(false);
 			// 清空并告诉submit
-			this.setState({value: ''}, () => {event.emit('btnEnabeld', this.focusedInput, this.focusedInput.value)});
+			this.setState({value: ''}, () => {this.handleEmit(this.focusedInput, this.focusedInput.value)});
 		}
 	}
 
@@ -55,7 +55,7 @@ class Input extends Component {
 		e.persist(); // 在React.js中执行去抖动
 		this.setState({value: e.target.value}, this.autoShowClear(e)); // 自动显示隐藏clear btn
 		// 监听submit状态
-		event.emit('btnEnabeld', e.target, e.target.value);
+		this.handleEmit(e.target, e.target.value);
 		if (this.props.onChange) this.props.onChange(e);
 	}
 
@@ -100,6 +100,10 @@ class Input extends Component {
 		if (readOnly || !validateHOC.validInline) return;
 		// 失去焦点校验value
 		validateHOC.validHook(value);
+	}
+
+	handleEmit(target, value) {
+		if (this.props.validateHOC.required) event.emit('btnEnabeld', target, value);
 	}
 
 	render() {

@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import classNames from 'classnames';
-import {event, strMapToObj} from '../Base/Js/utils';
+import {event, strMapToObj, each} from '../Base/Js/utils';
 import {Button, ButtonArea} from '../Button/index';
 // 不限制监听数量
 event.setMaxListeners(0);
@@ -21,6 +21,7 @@ class Submit extends Component {
 		this.state = {
 			validMap: new Set(),
 			enabledMap: new Map(),
+			validArr: [],
 			flag: true
 		};
 		this.validsize = 0;
@@ -61,36 +62,45 @@ class Submit extends Component {
 	}
 
 	handleValidRemove(target) {
-		n--;
-		
+		const {validArr} = this.state;
+		let deleteIndex;	
+		each(validArr, function(index) {
+			if (this.target === target) {
+				deleteIndex = index;
+				return false
+			} 
+		});
+		if (deleteIndex) {
+			validArr.splice(deleteIndex, 1);
+			n--;
+			this.setState({validArr});
+		}
 	}
 
 	handleClick(e) {
-		// const requiredMap = [];
-		// Array.from(this.state.validMap).map((item) => {
-		// 	const {target, validProps, validation} = item,
-		// 		  {value} = target,
-		// 		  {validType, hint, rules, required} = validProps,
-		// 		  {validHook, showHint} = validation;
-		// 	if (required && value === "") {
-		// 		requiredMap.push(required); 
-		// 		return false;
-		// 	}
-		// })
-		// requiredMap.length > 0
+		const {validArr} = this.state;
+		each(validArr, function(index) {
+			const {target, validHook} = this;
+			if (!validHook(target.value)) {
+				return false
+			}
+		});
  		if (this.props.onClick) this.props.onClick(e); 
 	}
 	
 	// 处理validMap, 分离出 requiredMap [], validMap []
 	parseValidMap(data) {
 		if (data.size <= 0) return;
+		const validArr = [];
 		for (let item of data.keys()) {
-			const {target, validProps, validation} = item,
-				  {value} = target,
-			      {validType, hint, rules, required} = validProps,
-			      {validHook, showHint} = validation;
-			this.handleEnabeld(target, value);
+			const {target, validation} = item,
+			      {validHook} = validation;
+			// 先判断按钮显示状态
+			this.handleEnabeld(target, target.value);
+			// 归纳
+			validArr.push(Object.assign({}, {target, validHook}));
 		}	
+		this.setState({validArr});
 	}
 	// 处理按钮显示状态
 	parseEnabeldMap() {

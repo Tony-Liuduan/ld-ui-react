@@ -56,10 +56,30 @@ function observer(cb) {
 	return observer;
 }
 
+// 遍历对象
+function each(obj, cbk) {
+	var i, len;
+	if(obj instanceof Array) {
+		for(i = 0, len = obj.length; i < len; i++) {
+			if(cbk.call(obj[i], i, obj[i]) === false) {
+				break;
+			}
+		}
+	}
+	else {
+		for(i in obj) {
+			if(cbk.call(obj[i], i, obj[i]) === false) {
+				break;
+			}
+		}
+	}
+}
+
 export default {
 	parseUrl,
 	parseJsonData,
 	event,
 	strMapToObj,
-	observer
+	observer,
+	each
 };
