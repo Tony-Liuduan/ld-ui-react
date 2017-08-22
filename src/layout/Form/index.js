@@ -1,3 +1,5 @@
+import Form from './Form';
+import Submit from './Submit';
 import Input from './Input';
 import Radio from './Radio';
 import Checkbox from './Checkbox';
@@ -6,9 +8,12 @@ import Switch from './Switch';
 import Agreement from './Agreement';
 import Textarea from './Textarea';
 import VCode from './VCode';
-import uploader from './Uploader';
+import Uploader from './Uploader';
+
 
 export default {
+	Form,
+	Submit,
 	Input,
 	Radio,
 	Checkbox,
@@ -17,5 +22,5 @@ export default {
 	Agreement,
 	Textarea,
 	VCode,
-	uploader
+	Uploader
 };

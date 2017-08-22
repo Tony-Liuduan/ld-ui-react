@@ -1,6 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import classNames from 'classnames';
+import {event} from '../Base/Js/utils';
 import {CellClear, Cell} from '../Cell/index';
+import ValidateHoc from './ValidateHoc';
 
 import './form.scss';
 
@@ -11,8 +13,17 @@ class Input extends Component {
 		formFocus: PropTypes.func,
 		formBlur: PropTypes.func,
 		handleCellClear: PropTypes.func,
-		clearInputValue: PropTypes.bool
+		clearInputValue: PropTypes.bool,
+		validate: PropTypes.object,
 	};	
+
+	static propTypes = {
+		validate: PropTypes.object,
+	};
+
+	static defaultProps = {
+		validate: {},
+	};
 
 	constructor(props) {
 		super(props);
@@ -24,34 +35,40 @@ class Input extends Component {
 
 	componentDidMount() {
 		// 自动获取焦点
-		if ('autoFocus' in this.props) {
+		if ('autoFocus' in this.props && !this.focusedInput.readOnly) {
 			this.context.formFocus(this.props.autoFocus);
 			this.focusedInput.focus(); 
 		}
+
+		this.props.getTarget(this.focusedInput);
 	}
 
 	componentDidUpdate(prevProps, prevState) {
 		if (this.context.clearInputValue) {
 			this.context.handleCellClear(false);
-			this.setState({value: ''});
+			// 清空并告诉submit
+			this.setState({value: ''}, () => {event.emit('btnEnabeld', this.focusedInput, this.focusedInput.value)});
 		}
 	}
 
 	onInputChange(e) {
 		e.persist(); // 在React.js中执行去抖动
 		this.setState({value: e.target.value}, this.autoShowClear(e)); // 自动显示隐藏clear btn
+		// 监听submit状态
+		event.emit('btnEnabeld', e.target, e.target.value);
 		if (this.props.onChange) this.props.onChange(e);
 	}
 
 	onInputFocus(e) {
 		e.persist(); // 在React.js中执行去抖动
-		this.autoShowClear(); // 自动显示clear btn
+		this.autoShowClear(e); // 自动显示clear btn
 		if (this.props.onFocus) this.props.onFocus(e);
 	}
 
 	onInputBlur(e) {
 		e.persist(); // 在React.js中执行去抖动
-		this.autoHiddenClear()  // 自动隐藏clear btn
+		this.autoHiddenClear();  // 自动隐藏clear btn
+		this.handleValidate(e);
 		if (this.props.onBlur) this.props.onBlur(e);
 	}
 	// 自动显示clear btn 当没有value时不显示clear btn
@@ -76,9 +93,17 @@ class Input extends Component {
 			if (this.context.formBlur) this.context.formBlur(this.state.focused);
 		});
 	}
+	// 失去焦点进行校验
+	handleValidate(e) {
+		const {value} = this.state, {validateHOC, readOnly} = this.props;
+		// readonly & 判断是否需要输入过程中validate
+		if (readOnly || !validateHOC.validInline) return;
+		// 失去焦点校验value
+		validateHOC.validHook(value);
+	}
 
 	render() {
-		const {className, value, defaultValue, onChange, onFocus, onBlur, focused, autoFocus, ...other} = this.props;
+		const {className, value, validate, validateHOC, getTarget, defaultValue, onChange, onFocus, onBlur, focused, autoFocus, ...other} = this.props;
 		const cls = classNames('ui-input', className);
 		
 		return (
@@ -88,4 +113,4 @@ class Input extends Component {
 
 }
 
-export default Input;
+export default ValidateHoc(Input);

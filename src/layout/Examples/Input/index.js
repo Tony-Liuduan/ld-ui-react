@@ -1,6 +1,8 @@
 import React from 'react';
 import Page from '../../Page/index';
 import {
+	Form,
+	Submit,
 	Input,
 	Radio,
 	Checkbox,
@@ -27,17 +29,58 @@ import {
 import {Button, ButtonArea} from '../../Button/index';
 
 class InputPage extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {};
+	}
+
 	render() {
 		return (
 			<Page title="Input" subTitle="表单输入">
-			<form action="">
+			<Form >
 				<FormHeader>个人信息</FormHeader>
 			{/*================  input  =================*/}
 				<CellsTitle>Input</CellsTitle>
 				<FormCell>
 					<CellLabel>InputLabel</CellLabel>
 					<CellControl> 
-						<Input type="text" placeholder="please input" autoFocus />
+						<Input name="a" type="text" placeholder="please input" autoFocus required validate={{validType: 'sms[4]', hint: "请输入xxx", rules: 1, required: true}}/>
+					</CellControl>
+					<CellClear />
+				</FormCell>
+				<FormCell>
+					<CellLabel>InputLabel</CellLabel>
+					<CellControl> 
+						<Input name="b" value="2334" type="text" placeholder="please input" required validate={{validType: 'sms[4]', hint: "请输入123", rules: 1, required: true}}/>
+					</CellControl>
+					<CellClear />
+				</FormCell>
+				<FormCell>
+					<CellLabel>InputLabel</CellLabel>
+					<CellControl> 
+						<Input name="c" type="text" placeholder="please input" required validate={{validType: 'sms[4]', hint: "请输入xxx", rules: 1, required: true}}/>
+					</CellControl>
+					<CellClear />
+				</FormCell>
+				<FormCell>
+					<CellLabel>InputLabel</CellLabel>
+					<CellControl> 
+						<Input type="text" placeholder="please input" required validate={{validType: 'sms[4]', hint: "请输入xxx", rules: 1, required: true}}/>
+					</CellControl>
+					<CellClear />
+				</FormCell>
+				<FormCell>
+					<CellLabel>InputLabel</CellLabel>
+					<CellControl> 
+						<Input name="d" type="text" placeholder="please input" required validate={{validType: 'sms[4]', hint: "请输入xxx", rules: 1, required: true}}/>
+					</CellControl>
+					<CellClear />
+				</FormCell>
+				<FormCell>
+					<CellLabel>InputLabel</CellLabel>
+					<CellControl> 
+						<Input type="text" placeholder="please input" required validate={{validType: 'sms[4]', hint: "请输入xxx", rules: 1, required: true}}/>
 					</CellControl>
 					<CellClear />
 				</FormCell>
@@ -213,11 +256,11 @@ class InputPage extends React.Component {
 					<a>《车分期征信查询授权书》</a>
 				</Agreement>
 				{/*<input type="submit" value="submit" height="20" width="50"/>*/}
-			</form>
+			</Form>
 			<ButtonArea space>
-				<Button size="large" type="orange-white">提 交</Button>
+				<Submit>提 交</Submit>
 			</ButtonArea>	
-			</Page>
+		</Page>
 		);
 	}
 };
