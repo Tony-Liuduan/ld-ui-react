@@ -13,7 +13,7 @@ class VCode extends Component {
 	};
 
 	static defaultProps = {
-		second: 60,
+		second: 6,
 		suffixText: "秒",
 		onClick: () => {console.log('click')}
 	};
@@ -26,29 +26,28 @@ class VCode extends Component {
 		}
 	}
 
-	handleClick(e) {
-		this.setState({sendOver: !this.state.sendOver}, this.countDown);	
+	componentWillUnmount() {
+		clearInterval(this.timer);
 	}
 
-	countDown() {
-		const {sendOver, second} = this.state, me = this;
-		let secondUpate = this.props.second;		
-		// 判断是否发送结束
-		if (sendOver) {
-			if (this.props.onClick) this.props.onClick(e); 
-			return;
-		};
+	handleClick(e) {
+		if (this.state.sendOver) this.setState({sendOver: false}, e => this.countDown(e));	
+	}
+
+	countDown(e) {
+		const {sendOver, second} = this.state;
+		let secondUpate = this.props.second;
 		// 倒计时
-		(function timer() {
-			if (secondUpate <= 0) {
-				clearInterval(timer);
-				me.setState({sendOver: true, second: me.props.second});
+		this.timer = setInterval(() => {
+			if (secondUpate <= 1) {
+				clearInterval(this.timer);
+				this.setState({sendOver: true, second: this.props.second});
+				if (this.props.onClick) this.props.onClick(e); 
 				return;
 			}
 			--secondUpate;
-			me.setState({second: secondUpate});
-			setTimeout(timer, 1000);
-		})();
+			this.setState({second: secondUpate});
+		}, 1000);
 	}
 
 	render() {

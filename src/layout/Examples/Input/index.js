@@ -210,7 +210,7 @@ class InputPage extends React.Component {
 						<Input type="number" defaultValue="0987" />
 					</CellControl>
 					<CellClear />
-					<VCode>获取验证码</VCode>
+					<VCode onClick={()=>console.log(123)}>获取验证码</VCode>
 				</FormCell>
 			{/*================  phone  =================*/}
 				<CellsTitle>Phone</CellsTitle>
