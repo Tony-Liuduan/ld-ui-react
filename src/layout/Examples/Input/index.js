@@ -37,7 +37,7 @@ class InputPage extends React.Component {
 
 	render() {
 		return (
-			<Page title="Input" subTitle="表单输入">
+			<Page title="Inputddd" subTitle="表单输入">
 			<Form >
 				<FormHeader>个人信息</FormHeader>
 			{/*================  input  =================*/}
@@ -45,42 +45,7 @@ class InputPage extends React.Component {
 				<FormCell>
 					<CellLabel>InputLabel</CellLabel>
 					<CellControl> 
-						<Input name="a" type="text" placeholder="please input" required validate={{validType: 'sms[4]', hint: "请输入xxx", rules: 1, required: true}}/>
-					</CellControl>
-					<CellClear />
-				</FormCell>
-				<FormCell>
-					<CellLabel>InputLabel</CellLabel>
-					<CellControl> 
-						<Input name="b" value="2334" type="text" placeholder="please input" required validate={{validType: 'sms[4]', hint: "请输入123", rules: 1, required: true}}/>
-					</CellControl>
-					<CellClear />
-				</FormCell>
-				<FormCell>
-					<CellLabel>InputLabel</CellLabel>
-					<CellControl> 
-						<Input name="c" type="text" placeholder="please input" required validate={{validType: 'sms[4]', hint: "请输入xxx", rules: 1, required: true}}/>
-					</CellControl>
-					<CellClear />
-				</FormCell>
-				<FormCell>
-					<CellLabel>InputLabel</CellLabel>
-					<CellControl> 
-						<Input type="text" placeholder="please input" required validate={{validType: 'sms[4]', hint: "请输入xxx", rules: 1, required: true}}/>
-					</CellControl>
-					<CellClear />
-				</FormCell>
-				<FormCell>
-					<CellLabel>InputLabel</CellLabel>
-					<CellControl> 
-						<Input name="d" type="text" placeholder="please input" required validate={{validType: 'sms[4]', hint: "请输入xxx", rules: 1, required: true}}/>
-					</CellControl>
-					<CellClear />
-				</FormCell>
-				<FormCell>
-					<CellLabel>InputLabel</CellLabel>
-					<CellControl> 
-						<Input type="text" placeholder="please input" required validate={{validType: 'sms[4]', hint: "请输入xxx", rules: 1, required: true}}/>
+						<Input name="a" type="text" placeholder="please input" validate={{validType: 'sms[4]', hint: "请输入xxx", rules: 1, required: false}}/>
 					</CellControl>
 					<CellClear />
 				</FormCell>
@@ -113,7 +78,7 @@ class InputPage extends React.Component {
 				<CellsTitle>Checkbox</CellsTitle>
 				<FormCell checkbox>
 					<CellContent>Option 1</CellContent>
-					<Checkbox name="Checkbox1" value="1"></Checkbox>
+					<Checkbox name="Checkbox1" value="1" required></Checkbox>
 				</FormCell>
 				<FormCell checkbox>
 					<CellContent>Option 2</CellContent>

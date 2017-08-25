@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import {event, observer} from '../Base/Js/utils';
 import Input from './Input';
+import Checkbox from './Checkbox';
 
 // observer 配置
 const config = {childList: true, subtree: true, attributes: false, characterData: false};
@@ -38,7 +39,7 @@ class Form extends Component {
 	// 递归查找Input validate
 	findValidSize = (child, index) => {
 		if (!child) return;	
-		if (child.type === Input) {
+		if (child.type === Input || child.type === Checkbox) {
 			const {required, validate} = child.props;
 			if (!!required || Object.keys(validate).length > 0) {
 				this.validCount++

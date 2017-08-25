@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {event} from '../Base/Js/utils';
-let id = 0;
+
 // 用于拦截表单组件，进行value 的 validate 校验
 const ValidateHoc = (Input) => 
 	class ValidateHoc extends Component {
@@ -29,7 +29,6 @@ const ValidateHoc = (Input) =>
 			const {validate, required} = this.props;
 			// 判断validate 有无，没有不往下进行，有则绑定 validate 相关属性
 			if (Object.keys(validate).length > 0 || required) {
-				id++;
 				this.bindValidation();
 			}
 		}
@@ -55,7 +54,7 @@ const ValidateHoc = (Input) =>
 					validHook: this.validHook.bind(this),
 					showHint: this.showHint.bind(this)
 				}
-			}, () => {event.emit('validate', {target: this.target, validation: Object.assign({}, this.state.validation)})});
+			}, () => {event.emit('validate', {target: this.target, required: validProps.required, validation: Object.assign({}, this.state.validation)})});
 		}
 		// 验证value是否通过 返回 true || false
 		validHook(val) {

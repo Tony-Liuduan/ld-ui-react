@@ -76,6 +76,7 @@ module.exports = {
     // 若没有设置代理，指向html文件根目录
     devServer: {
         contentBase: __dirname + '/public',
+        //hot: true,
         inline: true,
         port: 3005,
         host: '0.0.0.0',

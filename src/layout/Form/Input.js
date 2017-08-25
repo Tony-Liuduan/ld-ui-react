@@ -6,7 +6,7 @@ import ValidateHoc from './ValidateHoc';
 
 import './form.scss';
 
-// wrapper for index
+// wrapper for input
 class Input extends Component {
 
 	static contextTypes = {
@@ -67,9 +67,14 @@ class Input extends Component {
 
 	onInputBlur(e) {
 		e.persist(); // 在React.js中执行去抖动
-		this.autoHiddenClear();  // 自动隐藏clear btn
-		this.handleValidate(e);
-		if (this.props.onBlur) this.props.onBlur(e);
+		// 通过异步操作保证先执行clearbtn中click事件，后执行input的onblur事件，保证clearbtn的存在可以清楚value
+		setTimeout(() => {
+			// 异步执行 需要先判断目标是否被删除
+			if (!e.target) return;
+			this.autoHiddenClear();  // 自动隐藏clear btn
+			this.handleValidate(e);  // 校验input value
+ 			if (this.props.onBlur) this.props.onBlur(e);
+		}, 0);
 	}
 	// 自动显示clear btn 当没有value时不显示clear btn
 	autoShowClear() {

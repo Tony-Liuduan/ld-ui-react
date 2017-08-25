@@ -85,6 +85,7 @@ class Submit extends Component {
 				return false
 			}
 		});
+		
  		if (this.props.onClick) this.props.onClick(e); 
 	}
 	
@@ -92,11 +93,22 @@ class Submit extends Component {
 	parseValidMap(data) {
 		if (data.size <= 0) return;
 		const validArr = [];
+		let   value    = "";
 		for (let item of data.keys()) {
-			const {target, validation} = item,
+			const {target, required, validation} = item,
 			      {validHook} = validation;
 			// 先判断按钮显示状态
-			this.handleEnabeld(target, target.value);
+			if (required) {
+				switch (target.type) {
+					case 'checkbox':
+					value = target.checked ? true : "";
+					break;
+					default:
+					value = target.value;
+					break;
+				}
+				this.handleEnabeld(target, value);
+			}
 			// 归纳
 			validArr.push(Object.assign({}, {target, validHook}));
 		}	
