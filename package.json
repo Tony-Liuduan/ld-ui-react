@@ -4,7 +4,7 @@
   "description": "a simple blog based on react and redux",
   "main": "src/app.js",
   "scripts": {
-    "start": "webpack-dev-server --progress --profile --colors",
+    "start": "webpack-dev-server --progress --profile --colors --hot",
     "build": "set NODE_ENV=production&&webpack --config webpack.production.config.js --progress --profile --colors",
     "mock": "imitator -p 8050 -f ./mock/mock.config.js"
   },

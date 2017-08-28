@@ -1,6 +1,5 @@
 import React, {Component, PropTypes} from 'react';
 import classNames from 'classnames';
-import {event} from '../Base/Js/utils';
 import {CellClear, Cell} from '../Cell/index';
 import ValidateHoc from './ValidateHoc';
 
@@ -47,16 +46,19 @@ class Input extends Component {
 		if (this.context.clearInputValue) {
 			this.context.handleCellClear(false);
 			// 清空并告诉submit
-			this.setState({value: ''}, () => {this.handleEmit(this.focusedInput, this.focusedInput.value)});
+			this.setState({value: ''}, () => {
+				this.props.validateHOC.required && 
+				this.props.validateHOC.emitEnable(this.focusedInput, this.focusedInput.value)
+			});
 		}
 	}
 
 	onInputChange(e) {
 		e.persist(); // 在React.js中执行去抖动
 		this.setState({value: e.target.value}, this.autoShowClear(e)); // 自动显示隐藏clear btn
+		const {validateHOC} = this.props;
 		// 监听submit状态
-		this.handleEmit(e.target, e.target.value);
-		if (this.props.onChange) this.props.onChange(e);
+		if (validateHOC.required) validateHOC.handleChange(e);
 	}
 
 	onInputFocus(e) {
@@ -105,10 +107,6 @@ class Input extends Component {
 		if (readOnly || !validateHOC.validInline) return;
 		// 失去焦点校验value
 		validateHOC.validHook(value);
-	}
-
-	handleEmit(target, value) {
-		if (this.props.validateHOC.required) event.emit('btnEnabeld', target, value);
 	}
 
 	render() {

@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import {event, observer} from '../Base/Js/utils';
 import Input from './Input';
 import Checkbox from './Checkbox';
+import Agreement from './Agreement';
 
 // observer 配置
 const config = {childList: true, subtree: true, attributes: false, characterData: false};
@@ -39,14 +40,22 @@ class Form extends Component {
 	// 递归查找Input validate
 	findValidSize = (child, index) => {
 		if (!child) return;	
-		if (child.type === Input || child.type === Checkbox) {
-			const {required, validate} = child.props;
-			if (!!required || Object.keys(validate).length > 0) {
-				this.validCount++
-			}
-		} else if (child.props.children && typeof child.props.children === 'object'){
-			Children.map(child.props.children, this.findValidSize);
-		} 
+		const {children, required, validate} = child.props;
+		
+		switch (child.type) {
+			case Input:
+			case Checkbox:
+			case Agreement:
+				if (!!required || Object.keys(validate).length > 0) {
+					this.validCount++
+				}
+				break;
+			default:
+				if (children && typeof children === 'object'){
+					Children.map(children, this.findValidSize);
+				}
+				break;
+		}
 	}
 
 	render() {

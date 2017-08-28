@@ -45,7 +45,7 @@ class InputPage extends React.Component {
 				<FormCell>
 					<CellLabel>InputLabel</CellLabel>
 					<CellControl> 
-						<Input name="a" type="text" placeholder="please input" validate={{validType: 'sms[4]', hint: "请输入xxx", rules: 1, required: false}}/>
+						<Input name="a" type="text" placeholder="please input" validate={{validType: 'sms[4]', hint: "请输入xxx", rules: 1, required: true}}/>
 					</CellControl>
 					<CellClear />
 				</FormCell>
@@ -78,7 +78,7 @@ class InputPage extends React.Component {
 				<CellsTitle>Checkbox</CellsTitle>
 				<FormCell checkbox>
 					<CellContent>Option 1</CellContent>
-					<Checkbox name="Checkbox1" value="1" required></Checkbox>
+					<Checkbox name="Checkbox1" value="1" required onChange={() => {console.log('checkbox')}}></Checkbox>
 				</FormCell>
 				<FormCell checkbox>
 					<CellContent>Option 2</CellContent>
@@ -214,7 +214,7 @@ class InputPage extends React.Component {
 					</CellContent>
 				</FormCell>
 			{/*================  agreement  =================*/}
-				<Agreement label="同意">
+				<Agreement label="同意" required>
 					<a>《车分期征信查询授权书》</a>
 					<a>《车分期征信查询授权书》</a>
 					<a>《车分期征信查询授权书》</a>

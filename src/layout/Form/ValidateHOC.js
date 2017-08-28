@@ -51,10 +51,13 @@ const ValidateHoc = (Input) =>
 			this.setState({
 				validProps,
 				validation: {
+					emitEnable: this.emitSubmitEnable.bind(this),
 					validHook: this.validHook.bind(this),
 					showHint: this.showHint.bind(this)
 				}
-			}, () => {event.emit('validate', {target: this.target, required: validProps.required, validation: Object.assign({}, this.state.validation)})});
+			}, () => {event.emit('validate', 
+				{target: this.target, required: validProps.required, validation: Object.assign({}, this.state.validation)}
+			)});
 		}
 		// 验证value是否通过 返回 true || false
 		validHook(val) {
@@ -114,14 +117,35 @@ const ValidateHoc = (Input) =>
 			this.setState({isValid});
 			return isValid;
 		}
+		// 拦截onchange事件
+		handleChange(e) {
+			const {onChange} = this.props;
+			let value = '';
+			switch (e.target.type) {
+				case 'checkbox':
+				case 'redio':
+					value = e.target.checked ? true : "";
+					break;
+				default:
+					value = e.target.value;
+					break;
+			}
+			// 监听submit状态
+			if (this.state.validProps.required) this.emitSubmitEnable(e.target, value);
+			if (onChange) onChange(e);
+		}
 		// 获取当前验证元素
 		getTarget(target) {
 			this.target = target;
 		}
+		// 控制submit btn 显示 发送监控数据操作
+		emitSubmitEnable(target, value) {
+			event.emit('btnEnabeld', target, value);
+		}
 
 		render() {
 			const {validProps, validation, isValid, messageInline} = this.state;
-			const validateHOC = Object.assign({}, validProps, validation, {isValid, messageInline});
+			const validateHOC = Object.assign({}, validProps, validation, {isValid, messageInline}, {handleChange: this.handleChange.bind(this)});
 			return <Input {...this.props} validateHOC={validateHOC} getTarget={this.getTarget.bind(this)} />
 		}
 	};

@@ -4,6 +4,10 @@ input, button, textarea, select {
     border: none;
     background-color: transparent;
 }
+// chrome 自动填充时出现黄色backgroun bugfix
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0 1000px white inset;
+}
 
 label.ui-cell > * , .ui-agreement label > * { pointer-events: none; }
 
