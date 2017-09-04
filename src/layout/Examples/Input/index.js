@@ -50,9 +50,10 @@ class InputPage extends React.Component {
 						</CellControl>
 						<CellClear />
 					</FormCell>
+					<Input name="b" type="hidden" value="13" required />
 					{/*================  radio  =================*/}
 					<CellsTitle>Radio</CellsTitle>
-					<CheckboxGroup type="radio" id="0" required>
+					<CheckboxGroup type="radio" id="0">
 						<FormCell radio>
 							<CellContent>Option 1</CellContent>
 							<Radio name="radio1" value="1"></Radio>
@@ -82,7 +83,7 @@ class InputPage extends React.Component {
 					{/*================  checkbox  =================*/}
 
 					<CellsTitle>Checkbox</CellsTitle>
-					<CheckboxGroup required id="2">
+					<CheckboxGroup id="2">
 						<FormCell checkbox>
 							<CellContent>Option 1</CellContent>
 							<Checkbox name="Checkbox1" value="1"></Checkbox>
@@ -105,7 +106,7 @@ class InputPage extends React.Component {
 					</Cell>
 					{/*================  checkbox-inline  =================*/}
 					<CellsTitle>Checkbox-inline</CellsTitle>
-					<CheckboxGroup required id="3">
+					<CheckboxGroup id="3" required>
 						<FormCell checkboxInline>
 							<CellLabel>汽车</CellLabel>
 							<Checkbox name="car1" value="0" disabled inline>奔驰</Checkbox>
@@ -117,7 +118,7 @@ class InputPage extends React.Component {
 					<CellsTitle>Switch</CellsTitle>
 					<FormCell switch>
 						<CellContent>Switch normal</CellContent>
-						<Switch name="switch" value="switch" />
+						<Switch name="switch" required/>
 					</FormCell>
 					<FormCell switch>
 						<CellContent>Switch defaultChecked</CellContent>
@@ -132,8 +133,8 @@ class InputPage extends React.Component {
 					<FormCell select selectPos="after">
 						<CellLabel>Select after</CellLabel>
 						<CellControl>
-							<Select name="country" defaultValue="2">
-								<option disabled>请选择经营地类型</option>
+							<Select name="country" required>
+								<option value="" disabled>请选择经营地类型</option>
 								<option value="1">集中交易市场</option>
 								<option value="2">非集中交易市场</option>
 							</Select>
@@ -142,7 +143,7 @@ class InputPage extends React.Component {
 					</FormCell>
 					<FormCell select>
 						<CellControl>
-							<Select name="connect" defaultValue="1">
+							<Select name="connect" value="0">
 								<option value="0">QQ</option>
 								<option value="1">Weixin</option>
 								<option value="2">Sina</option>
@@ -154,8 +155,11 @@ class InputPage extends React.Component {
 						<CellLabel>
 							<Select
 								name="tel"
-								defaultValue="1"
 								data={[
+									{
+										value: '',
+										label: '请选择'
+									},
 									{
 										value: 1,
 										label: '+86'
@@ -224,7 +228,7 @@ class InputPage extends React.Component {
 						</CellContent>
 					</FormCell>
 					{/*================  agreement  =================*/}
-					<Agreement label="同意" required>
+					<Agreement label="同意" value="agreement" required>
 						<a>《车分期征信查询授权书》</a>
 						<a>《车分期征信查询授权书》</a>
 						<a>《车分期征信查询授权书》</a>

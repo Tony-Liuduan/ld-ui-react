@@ -45,7 +45,6 @@ class CheckboxGroup extends Component {
 			const checkboxGroupDOM = ReactDOM.findDOMNode(this),
 				  checkboxes = checkboxGroupDOM.querySelectorAll("input[type=" + this.props.type + "]");
 			this.initValidate(checkboxes);
-			
 		}
 	}
 
@@ -74,6 +73,7 @@ class CheckboxGroup extends Component {
 		}
 		this.setState({ value: flag }, () => {this.emitEnable()});
 	}
+
 	// change 后选中验证
 	parseChildrenMap(arg) {
 			if (arg.size <= 0) return;
@@ -89,7 +89,7 @@ class CheckboxGroup extends Component {
 	}
 	// 通知submit组内选中状态
 	emitEnable() {
-		setTimeout(() => {this.props.validateHOC.emitEnable(this.checkboxGroup, this.state.value );}, 0)
+		this.props.validateHOC.emitEnable(this.checkboxGroup, this.state.value ? true : '');
 	}
 
 	render() {

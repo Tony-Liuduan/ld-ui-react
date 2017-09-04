@@ -24,7 +24,9 @@ class Radio extends Component {
 	};	
 
 	componentDidMount() {
-		this.props.getTarget(this.radio);
+		if (this.props.required || this.props.validate.required) {
+			this.props.getTarget(this.radio);
+		}
 	}
 
 	handleChange(e) {

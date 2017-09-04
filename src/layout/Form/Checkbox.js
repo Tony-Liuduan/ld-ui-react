@@ -12,11 +12,11 @@ class Checkbox extends Component {
 
 	static propTypes = {
 		inline: PropTypes.bool,
-		component: PropTypes.func
+		component: PropTypes.func,
 	};
 
 	static defaultProps = {
-		inline: false
+		inline: false,
 	};
 
 	static contextTypes = {
@@ -25,10 +25,13 @@ class Checkbox extends Component {
 	};	
 
 	componentDidMount() {
-		this.props.getTarget(this.checkbox);
+		if (this.props.required || this.props.validate.required) {
+			this.props.getTarget(this.checkbox);
+		}
 	}
 
 	handleChange(e) {
+		this.setState({value: e.target.value});
 		const {validateHOC} = this.props;
 		// 自身 required
 		validateHOC.required && validateHOC.handleChange(e);
@@ -37,7 +40,7 @@ class Checkbox extends Component {
 	}
 
 	render() {
-		const {component, className, inline, children, onChange, validate, validateHOC, getTarget, ...other} = this.props;
+		const {component, className, inline, children, value, onChange, validate, validateHOC, getTarget, ...other} = this.props;
 		const defaultComoponent = inline ? 'label' : 'div';
 		const Component = component || defaultComoponent;
 		const cls = classNames({

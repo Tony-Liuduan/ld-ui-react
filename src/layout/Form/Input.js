@@ -38,8 +38,9 @@ class Input extends Component {
 			this.context.formFocus(this.props.autoFocus);
 			this.focusedInput.focus(); 
 		}
-
-		this.props.getTarget(this.focusedInput);
+		if (this.props.required || this.props.validate.required) {
+			this.props.getTarget(this.focusedInput);
+		}
 	}
 
 	componentDidUpdate(prevProps, prevState) {

@@ -70,7 +70,7 @@ const ValidateHoc = (Input) =>
 			}
 			// 再判断是否有验证规则map对象, 验证通过
 			if (Object.keys(rules).length <= 0) return this.handleIsValid(true);
-			// 获取验证规则及参数
+			// 获取验证规则及参数 
 			let ruleType = "", args = [];
 			// 过滤验证规则及参数	
 			if (validType instanceof Array) {
@@ -124,7 +124,11 @@ const ValidateHoc = (Input) =>
 			switch (e.target.type) {
 				case 'checkbox':
 				case 'redio':
-					value = e.target.checked ? true : "";
+					value = e.target.checked ? true : '';
+					break;
+				case 'select-one':
+				case 'select-multiple':
+					value = e.target.value;
 					break;
 				default:
 					value = e.target.value;

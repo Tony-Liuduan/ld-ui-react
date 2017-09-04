@@ -80,7 +80,7 @@ class Submit extends Component {
 		const {validArr} = this.state;
 		each(validArr, function(index) {
 			const {target, validHook} = this;
-			if (!validHook(target.value)) {
+			if (!validHook(target.value || (target.dataset.value && target.dataset.value === 'false' ? false : true))) {
 				return false;
 			}
 		});
@@ -95,14 +95,18 @@ class Submit extends Component {
 		let   value    = "";
 		for (let item of data.keys()) {
 			const {target, required, validation} = item,
-			      {validHook} = validation;
+				  {validHook} = validation;
 			// 先判断按钮显示状态
 			if (required) {
 				if (target.type) {
 					switch (target.type) {
 						case 'checkbox':
 						case 'radio':
-							value = target.checked;
+							value = target.checked ? true : '';
+							break;
+						case 'select-one':
+						case 'select-multiple':
+							value = target.value;
 							break;
 						default:
 							value = target.value;
@@ -110,7 +114,7 @@ class Submit extends Component {
 					}
 				} else {
 					// target 为 div checkboxgroup
-					value = target.dataset.value;
+					value = target.dataset.value && target.dataset.value === 'false' ? '' : true
 				}
 				this.handleEnabeld(target, value);
 			}
@@ -125,7 +129,7 @@ class Submit extends Component {
 		if (enabledMap.size <= 0) return;
 		let flag = true;
 		for (let value of enabledMap.values()) {
-			if (!value || value === "false") {
+			if (value == '') {
 				flag = false;
 				break;
 			} 
