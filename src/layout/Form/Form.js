@@ -4,7 +4,10 @@ import classNames from 'classnames';
 import {event, observer} from '../Base/Js/utils';
 import Input from './Input';
 import Checkbox from './Checkbox';
+import Radio from './Radio';
 import Agreement from './Agreement';
+import Textarea from './Textarea';
+import CheckboxGroup from './CheckboxGroup';
 
 // observer 配置
 const config = {childList: true, subtree: true, attributes: false, characterData: false};
@@ -45,7 +48,10 @@ class Form extends Component {
 		switch (child.type) {
 			case Input:
 			case Checkbox:
+			case Radio:
 			case Agreement:
+			case Textarea:
+			case CheckboxGroup: 
 				if (!!required || Object.keys(validate).length > 0) {
 					this.validCount++
 				}

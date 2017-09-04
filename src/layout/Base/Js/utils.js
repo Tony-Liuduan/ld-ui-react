@@ -29,6 +29,8 @@ function parseJsonData(data) {
 }
 
 const event = new EventEmitter(); 
+// 不限制监听数量
+event.setMaxListeners(0);
 
 // Map to Object
 function strMapToObj(strMap) {

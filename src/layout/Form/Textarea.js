@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
+import ValidateHoc from './ValidateHoc';
 
 // wrapper for textarea
 class Textarea extends Component {
@@ -18,10 +19,16 @@ class Textarea extends Component {
 	state = {
 		textCounter: this.props.defaultValue ? this.props.defaultValue.length : 0
 	};
+
+	componentDidMount() {
+		this.props.getTarget(this.textarea);
+	}
 	
 	handleChange(e) {
 		this.setState({textCounter: e.target.value.length});
-		if (this.props.onChange) this.props.onChange(e)
+		const {validateHOC} = this.props;
+		// 监听submit状态
+		if (validateHOC.required) validateHOC.handleChange(e);
 	}
 
 	renderCounter(maxLength) {
@@ -33,12 +40,12 @@ class Textarea extends Component {
 	}
 	
 	render() {
-		const {className, children, maxLength, showCounter, ...other} = this.props;
+		const {className, children, maxLength, showCounter, onChange, validate, validateHOC, getTarget, ...other} = this.props;
 		const cls = classNames({'ui-textarea': true}, className);
 
 		return (
 			<div>
-				<textarea className={cls} maxLength={maxLength} onChange={this.handleChange.bind(this)} {...other}>
+				<textarea className={cls} maxLength={maxLength} ref={(ref) => {this.textarea = ref;}} onChange={this.handleChange.bind(this)} {...other}>
 					{children}
 				</textarea>
 				{showCounter ? this.renderCounter(maxLength) : false}
@@ -47,4 +54,4 @@ class Textarea extends Component {
 	}
 };
 
-export default Textarea;
+export default ValidateHoc(Textarea);

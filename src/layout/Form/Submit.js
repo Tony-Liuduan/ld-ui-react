@@ -2,8 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import classNames from 'classnames';
 import {event, strMapToObj, each} from '../Base/Js/utils';
 import {Button, ButtonArea} from '../Button/index';
-// 不限制监听数量
-event.setMaxListeners(0);
+
 // 用于统计当前的接收到的验证input数量
 let n = 0;
 class Submit extends Component {
@@ -54,7 +53,7 @@ class Submit extends Component {
 		enabledMap = enabledMap.set(key, value);
 		this.setState({enabledMap});
 		// 审查必须填写项全部填写
-		this.parseEnabeldMap(this.state.enabledMap);
+		this.parseEnabeldMap();
 	}
 	// 获取form中验证表单数量
 	handleValidSize(size) {
@@ -82,7 +81,7 @@ class Submit extends Component {
 		each(validArr, function(index) {
 			const {target, validHook} = this;
 			if (!validHook(target.value)) {
-				return false
+				return false;
 			}
 		});
 		
@@ -99,13 +98,19 @@ class Submit extends Component {
 			      {validHook} = validation;
 			// 先判断按钮显示状态
 			if (required) {
-				switch (target.type) {
-					case 'checkbox':
-					value = target.checked ? true : "";
-					break;
-					default:
-					value = target.value;
-					break;
+				if (target.type) {
+					switch (target.type) {
+						case 'checkbox':
+						case 'radio':
+							value = target.checked;
+							break;
+						default:
+							value = target.value;
+							break;
+					}
+				} else {
+					// target 为 div checkboxgroup
+					value = target.dataset.value;
 				}
 				this.handleEnabeld(target, value);
 			}
@@ -120,13 +125,12 @@ class Submit extends Component {
 		if (enabledMap.size <= 0) return;
 		let flag = true;
 		for (let value of enabledMap.values()) {
-			if (value === "") {
+			if (!value || value === "false") {
 				flag = false;
 				break;
 			} 
 			flag = true;
 		}
-
 		this.setState({flag});
 	}
 

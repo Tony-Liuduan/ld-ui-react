@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import classNames from 'classnames';
 import ValidateHoc from './ValidateHoc';
+import {event} from '../Base/Js/utils';
 
 import './form.scss';
 // 不要单独使用checked value，使用checked value就必须伴随onChange事件  === 受控组件
@@ -18,8 +19,21 @@ class Checkbox extends Component {
 		inline: false
 	};
 
+	static contextTypes = {
+		requiredGroup: PropTypes.bool,
+		emitName: PropTypes.string
+	};	
+
 	componentDidMount() {
 		this.props.getTarget(this.checkbox);
+	}
+
+	handleChange(e) {
+		const {validateHOC} = this.props;
+		// 自身 required
+		validateHOC.required && validateHOC.handleChange(e);
+		// group required 通知checkboxgroup 变化
+		this.context.requiredGroup && event.emit(this.context.emitName, e.target, e.target.checked);
 	}
 
 	render() {
@@ -33,7 +47,7 @@ class Checkbox extends Component {
 
 		return (
 			<Component className={cls}>
-				<input type="checkbox" className="ui-inputcheck-input" ref={(ref) => {this.checkbox = ref;}} onChange={validateHOC.handleChange} {...other} />
+				<input type="checkbox" className="ui-inputcheck-input" ref={(ref) => {this.checkbox = ref;}} onChange={this.handleChange.bind(this)} {...other} />
 				<span className="ui-inputcheck-icon">{children}</span>
 			</Component>
 		);

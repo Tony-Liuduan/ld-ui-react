@@ -3,7 +3,7 @@ import { Router, Route, IndexRoute, IndexRedirect, browserHistory, hashHistory }
 
 import UIroot from '../views/UIroot';
 import Layout from '../layout/Examples/index';
-import App from '../containers/App';
+import Andt from '../andt/index';
 
 const {
 	Home,
@@ -17,6 +17,10 @@ const {
 	Picker,
 	Hoc
 } = Layout;
+
+const {
+	AndtHome
+} = Andt;
 
 export default class Routers extends Component {
 	render() {
@@ -36,7 +40,9 @@ export default class Routers extends Component {
     		        <Route path="list" component={List} />
     		        <Route path="input" component={Input} />
     		        <Route path="picker" component={Picker} />
-          		</Route>
+    		        <Route path="andt" component={AndtHome}> 
+    		        </Route>         		
+    		    </Route>
 			</Router>
 		); 
 	}
