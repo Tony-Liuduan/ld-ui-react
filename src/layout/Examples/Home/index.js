@@ -156,8 +156,32 @@ const UImenus = [
         name: 'Andt',
         items: [
             {
-                label: 'AndtDemo01',
-                to: '/andt'
+                label: 'AndtHome',
+                to: '/andt/home'
+            },{
+                label: 'table-fetch',
+                to: '/andt/table/0'
+            },{
+                label: 'table-外控',
+                to: '/andt/table/1'
+            },{
+                label: 'table-排序筛选',
+                to: '/andt/table/2'
+            },{
+                label: 'table-checkbox',
+                to: '/andt/table/3'
+            },{
+                label: 'table-fixed',
+                to: '/andt/table/4'
+            },{
+                label: 'table-add',
+                to: '/andt/table/5'
+            },{
+                label: 'table-edit',
+                to: '/andt/table/6'
+            },{
+                label: 'table-fixed-2',
+                to: '/andt/table/7'
             }
         ]
     }

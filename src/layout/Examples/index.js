@@ -7,7 +7,6 @@ import Navigation from './Navigation/index';
 import List from './List/index';
 import Input from './Input/index';
 import Picker from './Picker/index';
-import Hoc from './Hoc/index';
 
 export default {
 	Home,
@@ -18,6 +17,5 @@ export default {
 	Navigation,
 	List,
 	Input,
-	Picker,
-	Hoc
+	Picker
 };

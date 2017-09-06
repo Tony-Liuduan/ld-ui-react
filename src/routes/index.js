@@ -19,7 +19,15 @@ const {
 } = Layout;
 
 const {
-	AndtHome
+	AndtHome,
+	AndtTable0,
+	AndtTable1,
+	AndtTable2,
+	AndtTable3,
+	AndtTable4,
+	AndtTable5,
+	AndtTable6,
+	AndtTable7,
 } = Andt;
 
 export default class Routers extends Component {
@@ -40,8 +48,16 @@ export default class Routers extends Component {
     		        <Route path="list" component={List} />
     		        <Route path="input" component={Input} />
     		        <Route path="picker" component={Picker} />
-    		        <Route path="andt" component={AndtHome}> 
-    		        </Route>         		
+					{/* ===============  andt  ================ */}
+    		        <Route path="andt/home" component={AndtHome} />
+    		        <Route path="andt/table/0" component={AndtTable0} />
+    		        <Route path="andt/table/1" component={AndtTable1} />
+    		        <Route path="andt/table/2" component={AndtTable2} />
+    		        <Route path="andt/table/3" component={AndtTable3} />
+    		        <Route path="andt/table/4" component={AndtTable4} />
+    		        <Route path="andt/table/5" component={AndtTable5} />
+    		        <Route path="andt/table/6" component={AndtTable6} />
+    		        <Route path="andt/table/7" component={AndtTable7} />
     		    </Route>
 			</Router>
 		); 
