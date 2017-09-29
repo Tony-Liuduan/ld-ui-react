@@ -8,7 +8,14 @@
     "build": "set NODE_ENV=production&&webpack --config webpack.production.config.js --progress --profile --colors",
     "mock": "imitator -p 8050 -f ./mock/mock.config.js"
   },
-  "author": "liuduan",
+  "author": {
+    "name": "liuduan",
+    "email": "liuduan@58ganji.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tony-Liuduan/ld-ui-react"
+  },
   "license": "ISC",
   "dependencies": {
     "antd": "^2.12.8",
