@@ -1,5 +1,5 @@
 {
-  "name": "react-redux-webpack-demo",
+  "name": "ls-ui-react",
   "version": "1.0.0",
   "description": "a simple blog based on react and redux",
   "main": "src/app.js",

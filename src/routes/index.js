@@ -19,7 +19,8 @@ const {
 } = Layout;
 
 const {
-	AndtHome,
+	AndtLayout0,
+	AndtLayout1,
 	AndtTable0,
 	AndtTable1,
 	AndtTable2,
@@ -28,6 +29,10 @@ const {
 	AndtTable5,
 	AndtTable6,
 	AndtTable7,
+	AndtCascader,
+	AndtForm0,
+	AndtForm1,
+	AndtForm2,
 } = Andt;
 
 export default class Routers extends Component {
@@ -48,8 +53,11 @@ export default class Routers extends Component {
     		        <Route path="list" component={List} />
     		        <Route path="input" component={Input} />
     		        <Route path="picker" component={Picker} />
+
+					
 					{/* ===============  andt  ================ */}
-    		        <Route path="andt/home" component={AndtHome} />
+{/*     		        <Route path="andt/layout/0" component={AndtLayout0} />
+    		        <Route path="andt/layout/1" component={AndtLayout1} />
     		        <Route path="andt/table/0" component={AndtTable0} />
     		        <Route path="andt/table/1" component={AndtTable1} />
     		        <Route path="andt/table/2" component={AndtTable2} />
@@ -58,6 +66,10 @@ export default class Routers extends Component {
     		        <Route path="andt/table/5" component={AndtTable5} />
     		        <Route path="andt/table/6" component={AndtTable6} />
     		        <Route path="andt/table/7" component={AndtTable7} />
+    		        <Route path="andt/cascader" component={AndtCascader} />
+    		        <Route path="andt/form/0" component={AndtForm0} />
+    		        <Route path="andt/form/1" component={AndtForm1} />
+    		        <Route path="andt/form/2" component={AndtForm2} /> */}
     		    </Route>
 			</Router>
 		); 

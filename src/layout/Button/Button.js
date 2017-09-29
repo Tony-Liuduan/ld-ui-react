@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import './button.scss';
 
@@ -18,7 +18,7 @@ class Button extends Component {
 	};
 
 	render() {
-		const {component, type, size, className, children, ...other} = this.props;
+		const { component, type, size, className, children, ...other } = this.props;
 		const DefaultComponent = this.props.href ? 'a' : 'button';
 		const Component = component || DefaultComponent;
 		const cls = classNames({
