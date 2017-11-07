@@ -9,8 +9,8 @@
     "mock": "imitator -p 8050 -f ./mock/mock.config.js"
   },
   "author": {
-    "name": "liuduan",
-    "email": "liuduan@58ganji.com"
+    "name": "tony-liuduan",
+    "email": "liuduan.05.05@163.com"
   },
   "repository": {
     "type": "git",
@@ -18,11 +18,11 @@
   },
   "license": "ISC",
   "dependencies": {
-    "antd": "^2.12.8",
     "babel-polyfill": "^6.23.0",
     "es5-shim": "^4.5.9",
     "events": "^1.1.1",
     "fastclick": "^1.0.6",
+    "prop-types": "^15.6.0",
     "react": "^15.6.0",
     "react-addons-css-transition-group": "^15.6.0",
     "react-dom": "^15.6.0",

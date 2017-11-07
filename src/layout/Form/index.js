@@ -1,27 +1,25 @@
-import Form from './Form';
 import Submit from './Submit';
 import Input from './Input';
-import Radio from './Radio';
-import Checkbox from './Checkbox';
-import CheckboxGroup from './CheckboxGroup';
-import Select from './Select';
-import Switch from './Switch';
-import Agreement from './Agreement';
+import Radio from './radio';
+import Checkbox from './checkbox';
+import Checkedinput from './checkedinput';
+import Select from './select';
+import Switch from './switch';
+import Agreement from './agreement';
 import Textarea from './Textarea';
-import VCode from './VCode';
+import Smscode from './smscode';
 import Uploader from './Uploader';
 
 export default {
-	Form,
 	Submit,
 	Input,
 	Radio,
 	Checkbox,
-	CheckboxGroup,
+	Checkedinput,
 	Select,
 	Switch,
 	Agreement,
 	Textarea,
-	VCode,
+	Smscode,
 	Uploader
 };

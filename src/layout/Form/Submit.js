@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {event, strMapToObj, each} from '../Base/Js/utils';
 import {Button, ButtonArea} from '../Button/index';

@@ -1,29 +1,15 @@
-import React, {Component}from 'react';
-import classNames from 'classnames';
-import ValidateHoc from './ValidateHoc';
-import './form.scss';
+import React, { Component } from 'react';
+import Checkedinput from './checkedinput';
+import './agreement.scss';
 
-// agreement
-class Agreement extends Component {
+const Agreement = props => {
+    const { children, className, ...others } = props;
 
-	componentDidMount() {
-		this.props.getTarget(this.agreement);
-	}
+    return <div className={`ld-agreement-container ${className}`}>
+        <Checkedinput type="agreement" {...others} />
+        {children}
+    </div>
 
-	render() {
-		const {children, className, label, onChange, validate, validateHOC, getTarget, ...other} = this.props;
-		const cls = classNames({'ui-agreement': true}, className);
+}; 
 
-		return (
-			<div className={cls}>
-				<label>
-					<input type="checkbox" className="ui-agreement-checkbox" ref={(ref) => {this.agreement = ref;}} onChange={validateHOC.handleChange} {...other} />
-					<span className="ui-agreement-text">{label}</span>
-				</label>
-				{children}
-			</div>
-		);
-	}
-};
-
-export default ValidateHoc(Agreement);
+export default Agreement;

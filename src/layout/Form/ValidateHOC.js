@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {event} from '../Base/Js/utils';
 
 // 用于拦截表单组件，进行value 的 validate 校验

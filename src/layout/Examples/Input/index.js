@@ -6,12 +6,11 @@ import {
 	Input,
 	Radio,
 	Checkbox,
-	CheckboxGroup,
 	Select,
 	Switch,
 	Agreement,
 	Textarea,
-	VCode
+	Smscode
 } from '../../Form/index';
 import {
 	Cells,
@@ -29,17 +28,68 @@ import {
 } from '../../Cell/index';
 import { Button, ButtonArea } from '../../Button/index';
 
+const data = [
+	{ value: 0, label: 'Ph.D.' },
+	{ value: 1, label: 'Bachelor' },
+	{ value: 2, label: 'College' },
+];
+
+
 class InputPage extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = {
+			radio: '1',
+			checkbox: ['0', '2'],
+			agree: false,
+			switch: false,
+			select: '0'
+		};
+		this.handleChange = this.handleChange.bind(this);
 	}
+
+	handleChange(e, t) {
+		let { type, name, value, checked } = e.target;
+		type = t || type;
+		switch (type) {
+			case 'radio':
+			case 'select-one':
+				this.setState({
+					[name]: value
+				})
+				break;
+			case 'checkbox':
+				let result = this.state[name];
+				if (checked && !result.includes(value)) {
+					result.push(value);
+				} else {
+					result = result.filter(i => i !== value)
+				}
+				this.setState({
+					[name]: result
+				});
+				break;
+			case 'switch':
+				this.setState({
+					switch: checked
+				});
+				break;
+			case 'agreement':
+				this.setState({
+					agree: checked
+				});
+				break;
+			default:
+				break;
+		}
+	}
+
 
 	render() {
 		return (
 			<Page title="Input" subTitle="表单输入">
-				<Form >
+				<div >
 					<FormHeader>个人信息</FormHeader>
 					{/*================  input  =================*/}
 					<CellsTitle>Input</CellsTitle>
@@ -51,128 +101,108 @@ class InputPage extends React.Component {
 						<CellClear />
 					</FormCell>
 					<Input name="b" type="hidden" value="13" required />
+					
 					{/*================  radio  =================*/}
 					<CellsTitle>Radio</CellsTitle>
-					<CheckboxGroup type="radio" id="0">
-						<FormCell radio>
-							<CellContent>Option 1</CellContent>
-							<Radio name="radio1" value="1"></Radio>
-						</FormCell>
-						<FormCell radio>
-							<CellContent>Option 2</CellContent>
-							<Radio name="radio1" value="2"></Radio>
-						</FormCell>
-						<FormCell radio>
-							<CellContent>Option 3</CellContent>
-							<Radio name="radio1" value="3" disabled></Radio>
-						</FormCell>
-					</CheckboxGroup>
-					<Cell link>
-						<CellContent>More</CellContent>
-					</Cell>
-					{/*================  radio-inline  =================*/}
-					<CellsTitle>Radio-inline</CellsTitle>
-					<CheckboxGroup type="radio" id="1" required>
-						<FormCell radioInline>
-							<CellLabel>性别</CellLabel>
-							<Radio name="sex" value="1" defaultChecked inline>男</Radio>
-							<Radio name="sex" value="0" inline>女</Radio>
-							<Radio name="sex" value="2" disabled inline>其他</Radio>
-						</FormCell>
-					</CheckboxGroup>
-					{/*================  checkbox  =================*/}
+					{data.map(i => {
+						return <Radio
+							key={i.value}
+							inline={false}
+							name="radio"
+							label={i.label}
+							value={i.value}
+							checked={this.state.radio === `${i.value}`}
+							onChange={this.handleChange} />
+					})}
 
+					{/*================  checkbox  =================*/}
 					<CellsTitle>Checkbox</CellsTitle>
-					<CheckboxGroup id="2">
-						<FormCell checkbox>
-							<CellContent>Option 1</CellContent>
-							<Checkbox name="Checkbox1" value="1"></Checkbox>
-						</FormCell>
-						<FormCell checkbox>
-							<CellContent>Option 2</CellContent>
-							<Checkbox name="Checkbox2" value="2" disabled></Checkbox>
-						</FormCell>
-						<FormCell checkbox>
-							<CellContent>Option 3</CellContent>
-							<Checkbox name="Checkbox3" value="3" defaultChecked></Checkbox>
-						</FormCell>
-						<FormCell checkbox>
-							<CellContent>Option 4</CellContent>
-							<Checkbox name="Checkbox4" value="4"></Checkbox>
-						</FormCell>
-					</CheckboxGroup>
-					<Cell link>
-						<CellContent>More</CellContent>
-					</Cell>
+					{data.map(i => {
+						return <Checkbox
+							key={i.label}
+							inline={false}
+							name="checkbox"
+							label={i.label}
+							value={i.value}
+							checked={this.state.checkbox.includes(`${i.value}`)}
+							onChange={this.handleChange} />
+					})}
+
 					{/*================  checkbox-inline  =================*/}
 					<CellsTitle>Checkbox-inline</CellsTitle>
-					<CheckboxGroup id="3" required>
-						<FormCell checkboxInline>
-							<CellLabel>汽车</CellLabel>
-							<Checkbox name="car1" value="0" disabled inline>奔驰</Checkbox>
-							<Checkbox name="car2" value="1" inline>宝马</Checkbox>
-							<Checkbox name="car3" value="2" inline>奥迪</Checkbox>
-						</FormCell>
-					</CheckboxGroup>
+					<FormCell checkboxInline>
+						<CellLabel>汽车</CellLabel>
+						{data.map((i, index) => {
+							return <Checkbox
+								key={index + 2}
+								name="checkbox"
+								label={i.label}
+								value={i.value}
+								checked={this.state.checkbox.includes(`${i.value}`)}
+								onChange={this.handleChange} />
+						})}
+					</FormCell>
+
 					{/*================  switch  =================*/}
 					<CellsTitle>Switch</CellsTitle>
-					<FormCell switch>
-						<CellContent>Switch normal</CellContent>
-						<Switch name="switch" required/>
-					</FormCell>
-					<FormCell switch>
-						<CellContent>Switch defaultChecked</CellContent>
-						<Switch name="switch defaultChecked" value="switch" defaultChecked />
-					</FormCell>
-					<FormCell switch>
-						<CellContent>Switch disabled</CellContent>
-						<Switch name="switch disabled" value="switch" disabled />
-					</FormCell>
+					<Switch
+						inline={false}
+						label={'switch'}
+						checked={this.state.switch}
+						onChange={this.handleChange} />
+
+					
+					
+					
+					
+					
+					{/*================  agreement  =================*/}
+					<CellsTitle>Agreement</CellsTitle>
+					<Agreement
+						label={'同意'}
+						checked={this.state.agree}
+						onChange={this.handleChange}>
+						<a>《车分期征信查询授权书》</a>
+						<a>《车分期征信查询授权书》</a>
+						<a>《车分期征信查询授权书》</a>
+						<a>《车分期征信查询授权书》</a>
+					</Agreement>
 					{/*================  select  =================*/}
 					<CellsTitle>Select</CellsTitle>
 					<FormCell select selectPos="after">
 						<CellLabel>Select after</CellLabel>
 						<CellControl>
-							<Select name="country" required>
-								<option value="" disabled>请选择经营地类型</option>
-								<option value="1">集中交易市场</option>
-								<option value="2">非集中交易市场</option>
-							</Select>
+							<Select
+								name="select"
+								value={this.state.select}
+								placeholder="选我"
+								onChange={this.handleChange}
+								data={data}
+								disabled
+							/>
 							<CellArrow direction="down"></CellArrow>
 						</CellControl>
 					</FormCell>
 					<FormCell select>
 						<CellControl>
-							<Select name="connect" value="0">
-								<option value="0">QQ</option>
-								<option value="1">Weixin</option>
-								<option value="2">Sina</option>
-							</Select>
+							<Select
+								name="select"
+								value={this.state.select}
+								placeholder="选我"
+								onChange={this.handleChange}
+								data={data}
+							/>
 							<CellArrow></CellArrow>
 						</CellControl>
 					</FormCell>
 					<FormCell select selectPos="before">
 						<CellLabel>
 							<Select
-								name="tel"
-								data={[
-									{
-										value: '',
-										label: '请选择'
-									},
-									{
-										value: 1,
-										label: '+86'
-									},
-									{
-										value: 2,
-										label: '+62'
-									},
-									{
-										value: 3,
-										label: '+80'
-									}
-								]}
+								name="select"
+								value={this.state.select}
+								placeholder="选我"
+								onChange={this.handleChange}
+								data={data}
 							/>
 							<CellArrow direction="down"></CellArrow>
 						</CellLabel>
@@ -181,39 +211,15 @@ class InputPage extends React.Component {
 						</CellControl>
 						<CellClear></CellClear>
 					</FormCell>
-					{/*================  vcode  =================*/}
-					<CellsTitle>Vcode</CellsTitle>
+					{/*================  smscode  =================*/}
+					<CellsTitle>Smscode</CellsTitle>
 					<FormCell>
 						<CellLabel>验证码</CellLabel>
 						<CellControl>
 							<Input type="number" defaultValue="0987" />
 						</CellControl>
 						<CellClear />
-						<VCode onClick={() => console.log(123)}>获取验证码</VCode>
-					</FormCell>
-					{/*================  phone  =================*/}
-					<CellsTitle>Phone</CellsTitle>
-					<FormCell>
-						<CellLabel>验证码</CellLabel>
-						<CellControl>
-							<Input type="number" defaultValue="1234" />
-						</CellControl>
-						<CellClear />
-						<VCode>Send</VCode>
-					</FormCell>
-					{/*================  date  =================*/}
-					<CellsTitle>Date</CellsTitle>
-					<FormCell>
-						<CellLabel>Date</CellLabel>
-						<CellControl>
-							<Input type="date" />
-						</CellControl>
-					</FormCell>
-					<FormCell>
-						<CellLabel>Datetime</CellLabel>
-						<CellControl>
-							<Input type="datetime-local" />
-						</CellControl>
+						<Smscode onClick={() => console.log(123)}>获取验证码</Smscode>
 					</FormCell>
 					{/*================  textarea  =================*/}
 					<CellsTitle>Textarea</CellsTitle>
@@ -227,15 +233,8 @@ class InputPage extends React.Component {
 							<Textarea name="textarea" defaultValue="textarea" showCounter={false}></Textarea>
 						</CellContent>
 					</FormCell>
-					{/*================  agreement  =================*/}
-					<Agreement label="同意" value="agreement" required>
-						<a>《车分期征信查询授权书》</a>
-						<a>《车分期征信查询授权书》</a>
-						<a>《车分期征信查询授权书》</a>
-						<a>《车分期征信查询授权书》</a>
-					</Agreement>
 					{/*<input type="submit" value="submit" height="20" width="50"/>*/}
-				</Form>
+				</div>
 				<ButtonArea space>
 					<Submit>提 交</Submit>
 				</ButtonArea>

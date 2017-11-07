@@ -1,0 +1,14 @@
+.ld-agreement-container {
+    padding: 5px 14px;
+    font-size: 12px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    line-height: 24px;
+    a,
+    button {
+        display: inline-block;
+        color: #37acf4;
+    }
+}

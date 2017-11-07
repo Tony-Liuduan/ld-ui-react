@@ -1,65 +1,60 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import ValidateHoc from './ValidateHoc';
+
+import './select.scss';
 
 // wrapper for select
 class Select extends Component {
 
-	static propTypes = {
-		data: PropTypes.array,
-		value: PropTypes.any
-	};
+    static propTypes = {
+        data: PropTypes.array,
+        value: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
+        ]),
+        placeholder: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
+        ]),
+    };
 
-	static defaultProps = {
-		data: [],
-		value: ''
-	};
+    static defaultProps = {
+        data: [],
+        value: '',
+        placeholder: '请选择'
+    };
 
-	componentDidMount() {
-		if (this.props.required || this.props.validate.required) {
-			this.props.getTarget(this.select);
-		}
-	}
+    renderOption(data) {
+        const result = data.map((item, i) => (
+            <option key={i} value={item.value}>
+                {item.label}
+            </option>
+        ));
+        result.unshift(
+            <option key={'00'} value={this.props.placeholder} disabled>
+                {this.props.placeholder}
+            </option>
+        )
+        return result;
+    }
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			value: this.props.value
-		}
-	}
+    render() {
+        const { data, className, children, value, selected, onChange, placeholder, multiple, ...other } = this.props;
+        const cls = classNames('ld-select', {
+            'ld-select-placeholder': !`${value}`
+        }, className);
 
-	handleChange(e) {
-		this.setState({value: e.target.value});
-		const {validateHOC} = this.props;
-		// 自身 required
-		validateHOC.required && validateHOC.handleChange(e);
-	}
-
-	renderData(data) {
-		return data.map((item, i) => (
-			<option key={i} value={item.value} {...item} disabled={item.value ? false : true}>
-				{item.label}
-			</option>
-		));
-	}
-
-	render() {
-		const {data, className, children, value, onChange, validate, validateHOC, getTarget, ...other} = this.props;		
-		const cls = classNames({
-			'ui-inputselect': true,
-			'ui-inputselect-default': this.state.value === ''
-		}, className);
-
-		return (
-			<select className={cls} value={this.state.value} onChange={this.handleChange.bind(this)} ref={(ref) => {this.select = ref;}} {...other}>
-				{
-					data.length > 0 
-						? this.renderData(data)
-						: children
-				}
-			</select>
-		);
-	}
+        return (
+            <select className={cls} value={value || placeholder} onChange={onChange} {...other}>
+                {
+                    data.length > 0
+                        ? this.renderOption(data)
+                        : children
+                }
+            </select>
+        );
+    }
 };
 
-export default ValidateHoc(Select);
+export default Select;

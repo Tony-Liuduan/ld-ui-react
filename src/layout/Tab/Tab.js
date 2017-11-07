@@ -1,4 +1,5 @@
-import React, {Component, PropTypes, Children, cloneElement} from 'react';
+import React, {Component, Children, cloneElement} from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import NavBar from './NavBar';
 import TabBody from './TabBody';
