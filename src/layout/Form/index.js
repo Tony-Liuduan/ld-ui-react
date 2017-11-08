@@ -1,12 +1,12 @@
 import Submit from './Submit';
-import Input from './Input';
+import Input from './input';
 import Radio from './radio';
 import Checkbox from './checkbox';
 import Checkedinput from './checkedinput';
 import Select from './select';
 import Switch from './switch';
 import Agreement from './agreement';
-import Textarea from './Textarea';
+import Textarea from './textarea';
 import Smscode from './smscode';
 import Uploader from './Uploader';
 

@@ -36,6 +36,7 @@ const Checkedinput = props => {
     const inputComponent = (<input
         className={`ld-${inputModel}-input`}
         type={type === 'radio' ? type : 'checkbox'}
+        defaultChecked={defaultChecked}
         checked={checked}
         disabled={disabled}
         onChange={e => onChange(e, type)}
@@ -74,6 +75,7 @@ Checkedinput.propTypes = {
     className: PropTypes.string,
     inline: PropTypes.bool,
     type: PropTypes.string,
+    defaultChecked: PropTypes.bool,
     checked: PropTypes.bool,
     label: PropTypes.string,
     disabled: PropTypes.bool,
@@ -85,7 +87,6 @@ Checkedinput.defaultProps = {
     inline: true,
     type: 'checkbox',
     label: '',
-    checked: false,
     onChange() { }
 };
 

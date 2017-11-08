@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Checkedinput from './checkedinput';
 
 const Switch = props => (

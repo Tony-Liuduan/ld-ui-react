@@ -1,0 +1,23 @@
+input {
+    background-color: transparent;
+    outline: none;
+    border: 0;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
+input::-webkit-input-placeholder {
+    color: #bdbdbd;
+}
+
+.ld-input {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &-err input {
+        color: #ff3c3c;
+    }
+}

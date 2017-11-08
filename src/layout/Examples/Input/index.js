@@ -1,7 +1,6 @@
 import React from 'react';
 import Page from '../../Page/index';
 import {
-	Form,
 	Submit,
 	Input,
 	Radio,
@@ -44,9 +43,19 @@ class InputPage extends React.Component {
 			checkbox: ['0', '2'],
 			agree: false,
 			switch: false,
-			select: '0'
+			select: '0',
+			text: '',
+			textarea: 'what are u'
 		};
 		this.handleChange = this.handleChange.bind(this);
+		this.handleInputchange = this.handleInputchange.bind(this);
+		this.handleTextareaChange = this.handleTextareaChange.bind(this);
+	}
+
+	componentDidMount() {
+		this.setState({
+			text: '123'
+		})
 	}
 
 	handleChange(e, t) {
@@ -57,14 +66,14 @@ class InputPage extends React.Component {
 			case 'select-one':
 				this.setState({
 					[name]: value
-				})
+				});
 				break;
 			case 'checkbox':
 				let result = this.state[name];
 				if (checked && !result.includes(value)) {
 					result.push(value);
 				} else {
-					result = result.filter(i => i !== value)
+					result = result.filter(i => i !== value);
 				}
 				this.setState({
 					[name]: result
@@ -85,8 +94,15 @@ class InputPage extends React.Component {
 		}
 	}
 
+	handleInputchange(val) {
+		this.setState({ text: val })
+	}
+	handleTextareaChange(val) {
+		this.setState({ textarea: val })
+	}
 
 	render() {
+		console.log(this.state)
 		return (
 			<Page title="Input" subTitle="表单输入">
 				<div >
@@ -96,12 +112,19 @@ class InputPage extends React.Component {
 					<FormCell>
 						<CellLabel>InputLabel</CellLabel>
 						<CellControl>
-							<Input name="a" type="text" placeholder="please input" validate={{ validType: 'sms[4]', hint: "请输入xxx", rules: 1, required: true }} />
+							<Input name="a" type="text" value={this.state.text} err={true} onChange={this.handleInputchange} placeholder="please input" />
+						</CellControl>
+						<CellClear />
+					</FormCell>
+					<FormCell>
+						<CellLabel>Nocontrol</CellLabel>
+						<CellControl>
+							<Input name="a" type="text" defaultValue={this.state.text} err={false} placeholder="please input" />
 						</CellControl>
 						<CellClear />
 					</FormCell>
 					<Input name="b" type="hidden" value="13" required />
-					
+
 					{/*================  radio  =================*/}
 					<CellsTitle>Radio</CellsTitle>
 					{data.map(i => {
@@ -129,7 +152,7 @@ class InputPage extends React.Component {
 					})}
 
 					{/*================  checkbox-inline  =================*/}
-					<CellsTitle>Checkbox-inline</CellsTitle>
+					<CellsTitle>Checkbox-inline-nocontorl</CellsTitle>
 					<FormCell checkboxInline>
 						<CellLabel>汽车</CellLabel>
 						{data.map((i, index) => {
@@ -138,8 +161,7 @@ class InputPage extends React.Component {
 								name="checkbox"
 								label={i.label}
 								value={i.value}
-								checked={this.state.checkbox.includes(`${i.value}`)}
-								onChange={this.handleChange} />
+								defaultChecked={this.state.checkbox.includes(`${i.value}`)}/>
 						})}
 					</FormCell>
 
@@ -151,11 +173,6 @@ class InputPage extends React.Component {
 						checked={this.state.switch}
 						onChange={this.handleChange} />
 
-					
-					
-					
-					
-					
 					{/*================  agreement  =================*/}
 					<CellsTitle>Agreement</CellsTitle>
 					<Agreement
@@ -225,12 +242,12 @@ class InputPage extends React.Component {
 					<CellsTitle>Textarea</CellsTitle>
 					<FormCell>
 						<CellContent>
-							<Textarea name="textarea" placeholder="Enter your comments" maxLength={50} required></Textarea>
+							<Textarea name="textarea" value={this.state.textarea} onChange={this.handleTextareaChange} maxLength={50}/>
 						</CellContent>
 					</FormCell>
 					<FormCell>
 						<CellContent>
-							<Textarea name="textarea" defaultValue="textarea" showCounter={false}></Textarea>
+							<Textarea name="textarea" defaultValue="textarea" showCounter={false} />
 						</CellContent>
 					</FormCell>
 					{/*<input type="submit" value="submit" height="20" width="50"/>*/}

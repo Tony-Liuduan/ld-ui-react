@@ -1,0 +1,41 @@
+textarea {
+    background-color: transparent;
+    outline: none;
+    border: 0;
+}
+
+textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
+input::-webkit-input-placeholder {
+    color: #bdbdbd;
+}
+
+.ld-textarea {
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    &-err textarea {
+        color: #ff3c3c;
+    }
+    textarea {
+        display: block;
+        resize: none;
+        width: 100%;
+        min-height: 50px;
+        font-size: 14px;
+    }
+    &-tip {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    &-counter {
+        color: #B2B2B2;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: right;
+    }
+}
