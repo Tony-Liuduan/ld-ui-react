@@ -52,6 +52,9 @@ class Input extends Component {
                 value: nextProps.defaultValue
             });
         }
+        /* if (nextProps.err) {
+            this.controlXshow(true);
+        } */
     }
 
     handleChange(e) {
@@ -65,7 +68,7 @@ class Input extends Component {
 
     handleFocus(e) {
         e.persist(); // 在React.js中执行去抖动
-        const { value } = this.state;
+        const { value, xshow } = this.state;
         // 如果有值则显示x
         this.controlXshow(value); // 自动显示clear btn
         this.props.onFocus(value);
@@ -74,19 +77,21 @@ class Input extends Component {
     handleBlur(e) {
         e.persist(); // 在React.js中执行去抖动
         // 通过异步操作保证先执行clearbtn中click事件，后执行input的onblur事件，保证clearbtn的存在可以清楚value
-        const { value, xshow } = this.state;
+        const { xshow } = this.state;
         setTimeout(() => {
             // 异步执行 需要先判断目标是否被删除
             if (!e.target) return;
             // 自动隐藏clear btn
-            if (xshow) this.controlXshow('');     
-            this.props.onBlur(value);
+            if (xshow) this.controlXshow('');   
+            this.props.onBlur(this.state.value);
         }, 0);
     }
 
     handleClear() {
         this.setState({
             value: ''
+        }, () => {
+            this.props.onChange('');
         });
     }
 
@@ -118,6 +123,7 @@ class Input extends Component {
         return (
             <div className={cls}>
                 <input
+                    ref={el => this.inputRef = el}
                     type={type}
                     value={this.state.value}
                     placeholder={placeholder}

@@ -100,6 +100,8 @@ class Textarea extends Component {
     handleClear() {
         this.setState({
             value: ''
+        }, () => {
+            this.props.onChange('');
         });
     }
 

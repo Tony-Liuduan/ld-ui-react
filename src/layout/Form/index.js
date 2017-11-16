@@ -1,4 +1,3 @@
-import Submit from './Submit';
 import Input from './input';
 import Radio from './radio';
 import Checkbox from './checkbox';
@@ -8,10 +7,10 @@ import Switch from './switch';
 import Agreement from './agreement';
 import Textarea from './textarea';
 import Smscode from './smscode';
-import Uploader from './Uploader';
+import Validaterule from './validate.rule';
+import ValidateHOC from './validate';
 
 export default {
-	Submit,
 	Input,
 	Radio,
 	Checkbox,
@@ -21,5 +20,6 @@ export default {
 	Agreement,
 	Textarea,
 	Smscode,
-	Uploader
+	Validaterule,
+	ValidateHOC
 };

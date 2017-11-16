@@ -17,9 +17,17 @@ module.exports = function(imitator) {
 		result: imitator.file('./data/test.json')
 	});
 
-	// /test
+	// /citylist
 	imitator({
 		url: '/citylist',
 		result: imitator.file('./data/citylist.json')
+	});
+
+	// /exist/identity
+
+	imitator({
+		url: '/exist/identity',
+		action: "post",
+		result: imitator.file('./data/identity.json')
 	});
 }
